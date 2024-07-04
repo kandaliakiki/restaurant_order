@@ -1,8 +1,16 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Oswald } from "next/font/google";
 import "../globals.css";
+import Bottombar from "@/components/shared/Bottombar";
+import TopBar from "@/components/shared/TopBar";
 
 const inter = Inter({ subsets: ["latin"] });
+
+const oswald = Oswald({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--oswald",
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +24,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${inter.className} ${oswald.variable}`}>
+        <main className="flex flex-col overflow-auto min-h-screen bg-white-background px-4 py-2 font-oswald font-medium ">
+          <TopBar></TopBar>
+          {children}
+        </main>
+        <Bottombar></Bottombar>
+      </body>
     </html>
   );
 }
