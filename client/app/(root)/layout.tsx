@@ -25,7 +25,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} ${oswald.variable}`}>
-        <main className="flex flex-col overflow-auto min-h-screen bg-white-background px-4 py-2 font-oswald font-medium ">
+        <main className="flex flex-col overflow-auto min-h-screen bg-white-background px-4 py-2 font-oswald font-medium mb-16">
           <TopBar></TopBar>
           {children}
         </main>
