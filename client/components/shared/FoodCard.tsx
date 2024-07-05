@@ -29,10 +29,10 @@ const FoodCard: React.FC<FoodCardProps> = ({
           className="bg-transparent"
         ></Image>
       </div>
-      <div className="flex gap-1 items-center mt-2">
+      <div className="flex gap-1 items-center mt-2 justify-between">
         <Button
           variant="default"
-          className="text-[0.8rem] h-[1.5rem] px-5 bg-vibrant-pink"
+          className="text-[0.8rem] w-full h-[1.5rem] px-5 bg-vibrant-pink"
         >
           Add to Cart{" "}
         </Button>
