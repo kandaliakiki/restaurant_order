@@ -14,7 +14,7 @@ const Category = () => {
             <Link
               href={category.route}
               key={category.label}
-              className="bg-white  rounded-lg p-1 flex items-center "
+              className="bg-white flex items-center rounded-lg p-1 h-20"
             >
               <Image
                 src={category.imgUrl}

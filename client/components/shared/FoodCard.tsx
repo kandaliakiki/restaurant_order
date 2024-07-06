@@ -18,14 +18,13 @@ const FoodCard: React.FC<FoodCardProps> = ({
   return (
     <div className="h-52 w-full bg-white rounded-lg p-3 pb-10 text-sm tracking-wide font-medium">
       <p>{foodName}</p>
-      <p className="text-vibrant-pink">{price}$</p>
+      <p className="text-vibrant-pink">$ {price}</p>
       <div className="h-4/6  rounded-lg mt-2 relative bg-white-background flex items-center justify-center">
         <Image
           alt="food-image"
           src={imageUrl}
           width={120}
           height={120}
-          objectPosition="center"
           className="bg-transparent"
         ></Image>
       </div>
@@ -50,7 +49,6 @@ const FoodCard: React.FC<FoodCardProps> = ({
             }
             width={18}
             height={18}
-            objectPosition="center"
             className="bg-transparent "
           ></Image>
         </Button>

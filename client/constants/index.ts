@@ -4,30 +4,35 @@ export const bottomBarLinks = [
     imgUrl: "/assets/home.svg",
     route: "/",
     label: "Home",
+    activeRoutes: ["/", "/categories"],
   },
   {
     imgUrlActive: "/assets/heart-active.svg",
     imgUrl: "/assets/heart.svg",
     route: "/favorite",
     label: "Favorite",
+    activeRoutes: ["/favorite"],
   },
   {
     imgUrlActive: "/assets/magnifier.svg",
     imgUrl: "/assets/magnifier.svg",
     route: "/search",
     label: "Search",
+    activeRoutes: ["/search"],
   },
   {
     imgUrlActive: "/assets/basket-active.svg",
     imgUrl: "/assets/basket.svg",
     route: "/cart",
     label: "Cart",
+    activeRoutes: ["/cart"],
   },
   {
     imgUrlActive: "/assets/notification-active.svg",
     imgUrl: "/assets/notification.svg",
     route: "/notification",
     label: "Notification",
+    activeRoutes: ["/notification"],
   },
 ];
 
@@ -35,7 +40,7 @@ export const foodCategories = [
   {
     imgUrl: "/assets/burger.svg",
     label: "Burger",
-    size: 85,
+    size: 80,
     route: "/",
   },
   {
@@ -67,7 +72,7 @@ export const foodDeals = [
   },
   {
     imageUrl: "/assets/burger-food-deals.png",
-    foodName: "Classic Burger",
+    foodName: "Double Decker Beef Burger",
     price: 7.49,
     isFavorite: false,
   },

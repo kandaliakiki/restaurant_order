@@ -24,6 +24,9 @@ const config = {
       colors: {
         "vibrant-pink": "#FD1E52",
         "white-background": "#F2F2F7",
+        "gray-disabled": "#C2C2C4",
+        "vibrant-light-pink": "#FD5B81",
+
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
