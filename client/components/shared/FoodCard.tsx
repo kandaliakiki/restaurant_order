@@ -16,8 +16,8 @@ const FoodCard: React.FC<FoodCardProps> = ({
   isFavorite,
 }) => {
   return (
-    <div className="h-52 w-full bg-white rounded-lg p-3 pb-10 text-sm tracking-wide font-medium">
-      <p>{foodName}</p>
+    <div className="h-full w-full bg-white rounded-lg p-3 pb-10 text-sm tracking-wide font-medium">
+      <p className="">{foodName}</p>
       <p className="text-vibrant-pink">$ {price}</p>
       <div className="h-4/6  rounded-lg mt-2 relative bg-white-background flex items-center justify-center">
         <Image

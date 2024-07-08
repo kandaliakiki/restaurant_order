@@ -66,6 +66,10 @@
   }
 }
 
+.search_input {
+  @apply max-lg:w-fit lg:w-full rounded-md border border-gray-200 bg-white py-2.5 pl-5 lg:pr-12 text-lg shadow-lg font-medium focus:outline-none focus:ring-0;
+}
+
 @layer base {
   * {
     @apply border-border;
