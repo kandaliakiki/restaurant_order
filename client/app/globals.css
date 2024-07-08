@@ -70,6 +70,18 @@
   @apply max-lg:w-fit lg:w-full rounded-md border border-gray-200 bg-white py-2.5 pl-5 lg:pr-12 text-lg shadow-lg font-medium focus:outline-none focus:ring-0;
 }
 
+.order_cart_confirm {
+  @apply flex flex-1  items-center justify-center gap-1 text-base font-normal;
+}
+
+.add_minus-btn {
+  @apply bg-vibrant-pink flex-1 h-5 text-center rounded-xl flex items-center justify-center;
+}
+
+.add_minus-div {
+  @apply bg-vibrant-light-pink w-16   flex self-center items-center justify-evenly rounded-md text-white;
+}
+
 @layer base {
   * {
     @apply border-border;
@@ -87,4 +99,16 @@
 
 .hide-scrollbar::-webkit-scrollbar {
   display: none; /* Safari and Chrome */
+}
+
+.content-container {
+  margin-bottom: 0;
+}
+
+@media (min-height: 100vh) {
+  .content-container::after {
+    content: "";
+    display: block;
+    height: 4rem; /* Equivalent to mb-16 */
+  }
 }
