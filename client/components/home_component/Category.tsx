@@ -12,7 +12,7 @@ const Category = () => {
         {foodCategories.map((category) => (
           <div key={category.label} className="flex flex-col h-full">
             <Link
-              href={category.route}
+              href={`/categories/${category.route}`}
               key={category.label}
               className="bg-white flex items-center rounded-lg p-1 h-20"
             >

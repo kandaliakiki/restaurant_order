@@ -3,15 +3,19 @@ import React from "react";
 import { Button } from "../ui/button";
 
 interface FoodCardProps {
+  name: string;
+  subtitle: string;
   imageUrl: string;
-  foodName: string;
+  rating: number;
+  timeToServe: string;
+  description: string;
   price: number;
   isFavorite: boolean;
 }
 
 const FoodCard: React.FC<FoodCardProps> = ({
   imageUrl,
-  foodName,
+  name: foodName,
   price,
   isFavorite,
 }) => {
