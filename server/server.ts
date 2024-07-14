@@ -6,6 +6,8 @@ import { connectToDB } from "./lib/mongoose";
 import {
   createFoodFirstTime,
   getAllFood,
+  getFilteredFood,
+  getFoodById,
   getFoodByName,
 } from "./lib/actions/food.actions";
 
@@ -38,6 +40,31 @@ app.get("/api/food/:category", async (req, res) => {
     res.status(200).json(foodItems);
   } catch (error) {
     res.status(500).json({ message: "Failed to fetch food items by category" });
+  }
+});
+
+app.get("/api/food-detail/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    const foodItem = await getFoodById(id);
+    res.status(200).json(foodItem);
+  } catch (error) {
+    res.status(500).json({ message: "Failed to fetch food item by ID" });
+  }
+});
+
+// API endpoint to get filtered food items
+app.get("/api/food-filter", async (req, res) => {
+  const { maxPrice, foodTypes, searchText } = req.query;
+  try {
+    const foodItems = await getFilteredFood(
+      Number(maxPrice),
+      foodTypes as string,
+      searchText as string
+    );
+    res.status(200).json(foodItems);
+  } catch (error) {
+    res.status(500).json({ message: "Failed to fetch filtered food items" });
   }
 });
 

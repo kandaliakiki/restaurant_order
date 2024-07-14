@@ -41,7 +41,7 @@ const TopDeals = () => {
 
       {loading ? (
         <div className="flex items-center justify-center h-full">
-          <MoonLoader size={50} color={"#123abc"} loading={loading} />{" "}
+          <MoonLoader size={50} color={"#fd1e52"} loading={loading} />{" "}
         </div>
       ) : (
         <div className="grid grid-cols-2 gap-4 font-normal">

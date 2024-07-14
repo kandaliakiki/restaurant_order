@@ -1,16 +1,29 @@
 "use client";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 interface SearchSectionProps {
   isFilterClicked: boolean;
   setIsFilterClicked: (value: boolean) => void;
+  setTextToSearch: (value: string) => void;
 }
 
 const SearchSection = ({
   isFilterClicked,
   setIsFilterClicked,
+  setTextToSearch,
 }: SearchSectionProps) => {
+  const [searchText, setSearchText] = useState("");
+
+  const handleSearchChange = (e: any) => {
+    setSearchText(e.target.value);
+  };
+
+  useEffect(() => {
+    const timeout = setTimeout(() => setTextToSearch(searchText), 500);
+    return () => clearTimeout(timeout);
+  }, [searchText, setTextToSearch]);
+
   return (
     <div className="flex gap-2">
       <form
@@ -23,6 +36,8 @@ const SearchSection = ({
           type="text"
           placeholder="Search for food"
           className="focus:outline-none focus:ring-0 font-normal text-base"
+          value={searchText}
+          onChange={handleSearchChange}
         ></input>
       </form>
       <div

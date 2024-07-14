@@ -105,6 +105,82 @@
   margin-bottom: 0;
 }
 
+.custom-slider {
+  height: 2px; /* Adjust the height */
+  padding: 3px;
+  background: linear-gradient(
+    to right,
+    #fd1e52 0%,
+    #fd1e52 var(--value),
+    #cfcece var(--value),
+    #cfcece 100%
+  );
+
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.custom-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px; /* Adjust thumb width */
+  height: 20px; /* Adjust thumb height */
+  background: #ffffff; /* Adjust thumb color */
+  cursor: pointer;
+  outline: 1px solid #d4d4d4;
+
+  border-radius: 50%; /* Make thumb circle */
+  --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1),
+    0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color),
+    0 4px 6px -4px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
+    var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.custom-slider::-moz-range-thumb {
+  width: 20px; /* Adjust thumb width */
+  height: 20px; /* Adjust thumb height */
+  background: #ffffff; /* Adjust thumb color */
+  cursor: pointer;
+  border-radius: 50%; /* Make thumb circle */
+  --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1),
+    0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color),
+    0 4px 6px -4px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
+    var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+/* styles/globals.css or client/components/search_components/FilterSection.module.css */
+
+.custom-checkbox {
+  -webkit-appearance: none; /* Hide default checkbox */
+  -moz-appearance: none; /* Hide default checkbox */
+  appearance: none; /* Hide default checkbox */
+  width: 0.8rem; /* Adjust size as needed */
+  height: 0.8rem; /* Adjust size as needed */
+  border: 1px solid #d4d4d4; /* Default border */
+  border-radius: 0.25rem; /* Optional: rounded corners */
+  background-color: white; /* Default background */
+  position: relative;
+}
+
+.custom-checkbox:checked {
+  background-color: #fd1e52; /* Your desired background color */
+  border-color: #fd1e52; /* Optional: match the border color */
+}
+
+.custom-checkbox:checked::before {
+  content: "✔"; /* Use a checkmark symbol */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.6rem; /* Adjust size as needed */
+  color: white; /* Adjust color as needed */
+}
+
 @media (min-height: 100vh) {
   .content-container::after {
     content: "";

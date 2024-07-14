@@ -1,4 +1,5 @@
 export interface FoodItem {
+  _id: string;
   name: string;
   subtitle: string;
   imageUrl: string;
