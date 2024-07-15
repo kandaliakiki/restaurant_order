@@ -24,8 +24,9 @@ const AddOn = ({ src, alt, text, borderColor, textColor }: AddOnProps) => (
 );
 
 const FoodData = ({ _id }: { _id: string }) => {
-  const [foodDetail, setFoodDetail] = useState<FoodItem | null>(null); // Use singular FoodItem
-  const [loading, setLoading] = useState(true); // Add loading state
+  const [foodDetail, setFoodDetail] = useState<FoodItem | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   useEffect(() => {
     const backendUrl = process.env.NEXT_PUBLIC_BACKEND_ENDPOINT;
@@ -38,36 +39,59 @@ const FoodData = ({ _id }: { _id: string }) => {
         const data = await response.json();
         if (!data && retryCount < maxRetries) {
           retryCount++;
-          fetchFoodDetail(); // Retry fetching data
+          fetchFoodDetail();
         } else {
           setFoodDetail(data);
           console.log(data);
-          setLoading(false); // Set loading to false after data is fetched
         }
       } catch (error) {
         console.error("Failed to fetch food item", error);
-        setLoading(false); // Stop loading on error
+        setLoading(false);
       }
     };
 
     fetchFoodDetail();
   }, [_id]);
+
+  useEffect(() => {
+    if (foodDetail && imageLoaded) {
+      setLoading(false);
+    }
+  }, [foodDetail, imageLoaded]);
+
+  const handleImageLoad = () => {
+    setImageLoaded(true);
+  };
+
   return (
     <>
       {loading ? (
         <div className=" fixed bottom-0 px-5 pt-28 w-full bg-white-background text-black flex flex-col items-center justify-start h-3/4 rounded-t-3xl">
           <MoonLoader size={50} color={"#fd1e52"} loading={loading} />
-        </div>
-      ) : (
-        foodDetail && (
-          <div className="fixed bottom-0 px-5 pt-28 w-full bg-white-background text-black flex flex-col items-start justify-start h-3/4 rounded-t-3xl">
+
+          {foodDetail && (
             <Image
-              className="absolute top-[-8rem] transform translate-x-[-50%] left-1/2"
               width={250}
               height={250}
               alt="food-detail-img"
               src={foodDetail.imageUrl}
+              priority={true}
+              onLoad={handleImageLoad}
+              className="hidden"
             />
+          )}
+        </div>
+      ) : (
+        foodDetail && (
+          <div className="fixed bottom-0 px-5 pt-28 w-full bg-white-background text-black flex flex-col items-start justify-start h-3/4 rounded-t-3xl">
+            <div className="absolute top-[-8rem] left-1/2 transform -translate-x-1/2 flex justify-center items-start  w-[250px] h-[250px] p-1">
+              <Image
+                width={250}
+                height={250}
+                alt="food-detail-img"
+                src={foodDetail.imageUrl}
+              />
+            </div>
             <div className="bg-vibrant-light-pink w-24 mt-2 flex self-center items-center justify-evenly rounded-lg text-white">
               <span className="bg-vibrant-pink flex-1 text-center rounded-lg">
                 -

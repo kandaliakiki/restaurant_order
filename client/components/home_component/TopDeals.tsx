@@ -15,21 +15,28 @@ const TopDeals = () => {
     let retryCount = 0;
     const maxRetries = 5;
 
-    const fetchData = () => {
-      fetch(`${backendUrl}/api/food`)
-        .then((response) => response.json())
-        .then((data) => {
-          if (data.length === 0 && retryCount < maxRetries) {
-            retryCount++;
-          } else {
-            setFoodItems(data);
-            setLoading(false); // Set loading to false after data is fetched
-          }
-        })
-        .catch((error) => {
-          console.error("Error fetching data:", error);
-          setLoading(false); // Stop loading on error
-        });
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`${backendUrl}/api/food`);
+        const data = await response.json();
+        if (data.length === 0 && retryCount < maxRetries) {
+          retryCount++;
+
+          fetchData(); // Retry immediately if conditions are met
+        } else {
+          setFoodItems(data);
+          setLoading(false); // Set loading to false after data is fetched
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        if (retryCount < maxRetries) {
+          retryCount++;
+
+          fetchData(); // Retry on error
+        } else {
+          setLoading(false); // Stop loading after max retries
+        }
+      }
     };
 
     fetchData();

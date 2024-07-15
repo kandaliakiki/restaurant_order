@@ -6,7 +6,7 @@ import Image from "next/image";
 import React, { useState } from "react";
 
 const page = () => {
-  const [currentPage, setCurrentPage] = useState("Purchased");
+  const [currentPage, setCurrentPage] = useState("confirmProduct");
 
   return (
     <section className="flex flex-col gap-3 mt-2  ">
