@@ -1,3 +1,4 @@
+import { CartProvider } from "@/components/home_component/CartContext";
 import Category from "@/components/home_component/Category";
 import HeroSection from "@/components/home_component/HeroSection";
 import TopDeals from "@/components/home_component/TopDeals";

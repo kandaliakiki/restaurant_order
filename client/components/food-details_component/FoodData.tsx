@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import { Button } from "../ui/button";
 import { FoodItem } from "../shared/interface";
 import { MoonLoader } from "react-spinners";
+import { useCart } from "../home_component/CartContext";
 
 interface AddOnProps {
   src: string;
@@ -12,11 +13,20 @@ interface AddOnProps {
   text: string;
   borderColor: string;
   textColor: string;
+  onClick: () => void;
 }
 
-const AddOn = ({ src, alt, text, borderColor, textColor }: AddOnProps) => (
+const AddOn = ({
+  src,
+  alt,
+  text,
+  borderColor,
+  textColor,
+  onClick,
+}: AddOnProps) => (
   <div
-    className={`flex gap-1 px-2 rounded-lg border ${borderColor} ${textColor}`}
+    className={`flex gap-1 px-2 rounded-lg border ${borderColor} ${textColor} cursor-pointer`}
+    onClick={onClick}
   >
     <Image alt={alt} src={src} width={16} height={16} />
     {text}
@@ -27,6 +37,31 @@ const FoodData = ({ _id }: { _id: string }) => {
   const [foodDetail, setFoodDetail] = useState<FoodItem | null>(null);
   const [loading, setLoading] = useState(true);
   const [imageLoaded, setImageLoaded] = useState(false);
+  const [quantity, setQuantity] = useState(1);
+  const { cart, addToCart, removeFromCart } = useCart();
+  const [chosenAddOns, setChosenAddOns] = useState<string[]>([]);
+
+  const handleIncrease = () => setQuantity((prev) => prev + 1);
+  const handleDecrease = () => setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
+
+  const toggleAddOn = (addOn: string) => {
+    setChosenAddOns((prevAddOns) =>
+      prevAddOns.includes(addOn)
+        ? prevAddOns.filter((item) => item !== addOn)
+        : [...prevAddOns, addOn]
+    );
+  };
+
+  const handleAddToCart = () => {
+    if (foodDetail) {
+      const cartItem = {
+        productId: _id,
+        quantity: quantity,
+        addOns: chosenAddOns.join(", "),
+      };
+      addToCart(cartItem);
+    }
+  };
 
   useEffect(() => {
     const backendUrl = process.env.NEXT_PUBLIC_BACKEND_ENDPOINT;
@@ -92,14 +127,20 @@ const FoodData = ({ _id }: { _id: string }) => {
                 src={foodDetail.imageUrl}
               />
             </div>
-            <div className="bg-vibrant-light-pink w-24 mt-2 flex self-center items-center justify-evenly rounded-lg text-white">
-              <span className="bg-vibrant-pink flex-1 text-center rounded-lg">
+            <div className="bg-vibrant-light-pink w-24 mt-2 h-6 flex self-center items-center justify-evenly rounded-lg text-white">
+              <Button
+                onClick={handleDecrease}
+                className="bg-vibrant-pink text-center rounded-lg h-full"
+              >
                 -
-              </span>
-              <span className="flex-1 text-center">2</span>
-              <span className="bg-vibrant-pink flex-1 text-center rounded-lg">
+              </Button>
+              <span className="flex-1 text-center">{quantity}</span>
+              <Button
+                onClick={handleIncrease}
+                className="bg-vibrant-pink text-center rounded-lg h-full"
+              >
                 +
-              </span>
+              </Button>
             </div>
             <div className="flex justify-between items-center w-full h-auto mt-3">
               <p className="text-xl font-semibold">{foodDetail.name}</p>
@@ -131,36 +172,39 @@ const FoodData = ({ _id }: { _id: string }) => {
             <p className="font-normal text-sm mt-3">{foodDetail.description}</p>
             <p className="font-medium text-lg mt-3">Add-ons</p>
             <div className="flex w-full gap-3 text-[0.8rem] font-normal mt-3 flex-wrap">
-              <AddOn
-                src="/assets/cross.svg"
-                alt="add-ons-icon"
-                text="Extra Cheese"
-                borderColor="border-vibrant-pink"
-                textColor="text-vibrant-pink"
-              />
-              <AddOn
-                src="/assets/cross.svg"
-                alt="add-ons-icon"
-                text="Extra Bacon"
-                borderColor="border-vibrant-pink"
-                textColor="text-vibrant-pink"
-              />
-              <AddOn
-                src="/assets/plus.svg"
-                alt="add-ons-icon"
-                text="Mayo Sauce"
-                borderColor="border-gray-500"
-                textColor="text-gray-500"
-              />
-              <AddOn
-                src="/assets/plus.svg"
-                alt="add-ons-icon"
-                text="Tomato Sauce"
-                borderColor="border-gray-500"
-                textColor="text-gray-500"
-              />
+              {[
+                "Extra Cheese",
+                "Extra Bacon",
+                "Mayo Sauce",
+                "Tomato Sauce",
+              ].map((addOn) => (
+                <AddOn
+                  key={addOn}
+                  src={
+                    chosenAddOns.includes(addOn)
+                      ? "/assets/cross.svg"
+                      : "/assets/plus.svg"
+                  }
+                  alt="add-ons-icon"
+                  text={addOn}
+                  borderColor={
+                    chosenAddOns.includes(addOn)
+                      ? "border-vibrant-pink"
+                      : "border-gray-500"
+                  }
+                  textColor={
+                    chosenAddOns.includes(addOn)
+                      ? "text-vibrant-pink"
+                      : "text-gray-500"
+                  }
+                  onClick={() => toggleAddOn(addOn)}
+                />
+              ))}
             </div>
-            <Button className="w-full mt-4 h-12 text-lg bg-vibrant-pink">
+            <Button
+              className="w-full mt-4 h-12 text-lg bg-vibrant-pink"
+              onClick={handleAddToCart}
+            >
               Add To Cart
             </Button>
           </div>

@@ -1,8 +1,11 @@
+"use client";
+
 import React, { createContext, useState, useContext, ReactNode } from "react";
 
 interface CartItem {
   productId: string;
   quantity: number;
+  addOns: string; // Comma-separated add-ons
 }
 
 interface CartContextType {
@@ -23,11 +26,23 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
       );
 
       if (existingItemIndex !== -1) {
-        const updatedCart = [...prevCart];
-        updatedCart[existingItemIndex].quantity += item.quantity;
+        const updatedCart = prevCart.map((cartItem, index) => {
+          if (index === existingItemIndex) {
+            return {
+              ...cartItem,
+              quantity: cartItem.quantity + item.quantity,
+              addOns: [
+                ...cartItem.addOns.split(","),
+                ...item.addOns.split(","),
+              ].join(","),
+            };
+          }
+          return cartItem;
+        });
         return updatedCart;
       } else {
-        return [...prevCart, item];
+        const newCart = [...prevCart, item];
+        return newCart;
       }
     });
   };
