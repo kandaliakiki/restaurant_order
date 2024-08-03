@@ -36,6 +36,14 @@ export const bottomBarLinks = [
   },
 ];
 
+export type BottomBarLink = {
+  imgUrlActive: string;
+  imgUrl: string;
+  route: string;
+  label: string;
+  activeRoutes: string[];
+};
+
 export const foodCategories = [
   {
     imgUrl: "/assets/burger.svg",

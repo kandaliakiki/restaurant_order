@@ -32,9 +32,6 @@ const IconLink = ({ href, src, alt, badgeCount }: IconLinkProps) => (
 const IconLinksFoodDetails = () => {
   const { cart } = useCart();
 
-  const totalQuantity =
-    cart.length > 0 ? cart.reduce((sum, item) => sum + item.quantity, 0) : 0;
-
   return (
     <div className="w-full px-4 pt-5 flex justify-between">
       <IconLink

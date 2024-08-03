@@ -5,9 +5,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
+import IconBottomBar from "../home_component/IconBottomBar"; // Adjust the import path as necessary
+import { useCart } from "../home_component/CartContext";
 
 const Bottombar = () => {
   const pathname = usePathname();
+  const { cart } = useCart();
   return (
     <div className="fixed bottom-0 w-full bg-white-background text-white flex items-start justify-around py-4 h-16 ">
       {bottomBarLinks.map((link) =>
@@ -27,14 +30,12 @@ const Bottombar = () => {
             </div>
           </Link>
         ) : (
-          <Link href={link.route} key={link.label}>
-            <Image
-              width={32}
-              height={32}
-              alt={link.label}
-              src={pathname === link.route ? link.imgUrlActive : link.imgUrl}
-            ></Image>
-          </Link>
+          <IconBottomBar
+            key={link.label}
+            link={link}
+            pathname={pathname}
+            badgeCount={link.label === "Cart" ? cart.length : undefined}
+          />
         )
       )}
     </div>
