@@ -6,14 +6,18 @@ import { Button } from "@/components/ui/button";
 import React, { useState, useEffect } from "react";
 import MoonLoader from "react-spinners/MoonLoader"; // Import MoonLoader
 import { FoodItem } from "@/components/shared/interface";
+import { useCart } from "@/components/home_component/CartContext"; // Import useCart
 
 const page = () => {
   const [isFilterClicked, setIsFilterClicked] = useState(false);
   const [sliderValue, setSliderValue] = useState(10);
   const [checkedFoodTypes, setCheckedFoodTypes] = useState<string[]>([]);
   const [textToSearch, setTextToSearch] = useState("");
+
   const [filteredFood, setFilteredFood] = useState<FoodItem[]>([]);
   const [loading, setLoading] = useState(false); // Add loading state
+
+  const { addToCart } = useCart(); // Get addToCart from CartContext
 
   const fetchFilteredFood = async () => {
     const backendUrl = process.env.NEXT_PUBLIC_BACKEND_ENDPOINT;
@@ -95,6 +99,13 @@ const page = () => {
               <FoodCard
                 isFavorite={false}
                 key={foodItem.name}
+                addToCart={() =>
+                  addToCart({
+                    productId: foodItem._id, // Use _id from FoodItem
+                    quantity: 1, // Default quantity
+                    addOns: "", // Default addOns
+                  })
+                } // Pass addToCart function
                 {...foodItem}
               ></FoodCard>
             ))

@@ -1,5 +1,4 @@
 import FilteredFoodCategory from "@/components/category_component/FilteredFoodCategory";
-import FoodCard from "@/components/shared/FoodCard";
 import { Button } from "@/components/ui/button";
 import { foodCategories, foodDeals } from "@/constants";
 import Link from "next/link";

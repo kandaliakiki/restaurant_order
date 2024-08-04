@@ -3,12 +3,14 @@
 import { foodDeals } from "@/constants";
 import React, { useEffect, useState } from "react";
 import FoodCard from "../shared/FoodCard";
-import { MoonLoader } from "react-spinners"; // Import the MoonLoader
+import { MoonLoader } from "react-spinners";
 import { FoodItem } from "../shared/interface";
+import { useCart } from "./CartContext";
 
 const TopDeals = () => {
   const [foodItems, setFoodItems] = useState<FoodItem[]>([]);
-  const [loading, setLoading] = useState(true); // Add loading state
+  const [loading, setLoading] = useState(true);
+  const { addToCart } = useCart(); // Destructure addToCart from useCart
 
   useEffect(() => {
     const backendUrl = process.env.NEXT_PUBLIC_BACKEND_ENDPOINT;
@@ -21,7 +23,6 @@ const TopDeals = () => {
         const data = await response.json();
         if (data.length === 0 && retryCount < maxRetries) {
           retryCount++;
-
           fetchData(); // Retry immediately if conditions are met
         } else {
           setFoodItems(data);
@@ -31,7 +32,6 @@ const TopDeals = () => {
         console.error("Error fetching data:", error);
         if (retryCount < maxRetries) {
           retryCount++;
-
           fetchData(); // Retry on error
         } else {
           setLoading(false); // Stop loading after max retries
@@ -48,7 +48,7 @@ const TopDeals = () => {
 
       {loading ? (
         <div className="flex items-center justify-center h-full">
-          <MoonLoader size={50} color={"#fd1e52"} loading={loading} />{" "}
+          <MoonLoader size={50} color={"#fd1e52"} loading={loading} />
         </div>
       ) : (
         <div className="grid grid-cols-2 gap-4 font-normal">
@@ -56,7 +56,14 @@ const TopDeals = () => {
             <FoodCard
               key={foodItem.name}
               isFavorite={false}
-              {...foodItem}
+              addToCart={() =>
+                addToCart({
+                  productId: foodItem._id, // Use _id from FoodItem
+                  quantity: 1, // Default quantity
+                  addOns: "", // Default addOns
+                })
+              } // Pass addToCart function
+              {...foodItem} // Pass the rest of foodItem properties
             ></FoodCard>
           ))}
         </div>

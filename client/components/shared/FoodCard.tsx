@@ -13,6 +13,7 @@ interface FoodCardProps {
   price: number;
   _id: string;
   isFavorite: boolean;
+  addToCart: () => void; // Add addToCart prop
 }
 
 const FoodCard: React.FC<FoodCardProps> = ({
@@ -21,6 +22,7 @@ const FoodCard: React.FC<FoodCardProps> = ({
   name: foodName,
   price,
   isFavorite,
+  addToCart, // Destructure addToCart
 }) => {
   return (
     <div className="h-full w-full bg-white rounded-lg p-3 pb-5 text-sm tracking-wide font-medium">
@@ -43,6 +45,7 @@ const FoodCard: React.FC<FoodCardProps> = ({
         <Button
           variant="default"
           className="text-[0.8rem] w-full h-[1.5rem] px-5 bg-vibrant-pink"
+          onClick={addToCart} // Use addToCart function
         >
           Add to Cart{" "}
         </Button>
