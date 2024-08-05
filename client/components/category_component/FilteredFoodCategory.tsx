@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { FoodItem } from "../shared/interface";
 import FoodCard from "../shared/FoodCard";
 import { MoonLoader } from "react-spinners";
-import { useCart } from "../home_component/CartContext";
+import { useCart } from "../cart_component/CartContext";
 
 const FilteredFoodCategory = ({ category }: { category: string }) => {
   const [filteredFood, setFilteredFood] = useState<FoodItem[]>([]);

@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import React, { useState, useEffect } from "react";
 import MoonLoader from "react-spinners/MoonLoader"; // Import MoonLoader
 import { FoodItem } from "@/components/shared/interface";
-import { useCart } from "@/components/home_component/CartContext"; // Import useCart
+import { useCart } from "@/components/cart_component/CartContext";
 
 const page = () => {
   const [isFilterClicked, setIsFilterClicked] = useState(false);

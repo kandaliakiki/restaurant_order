@@ -6,7 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 import IconBottomBar from "../home_component/IconBottomBar"; // Adjust the import path as necessary
-import { useCart } from "../home_component/CartContext";
+import { useCart } from "../cart_component/CartContext";
 
 const Bottombar = () => {
   const pathname = usePathname();

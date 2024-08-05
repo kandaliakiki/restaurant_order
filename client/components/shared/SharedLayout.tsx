@@ -1,8 +1,13 @@
 import { ReactNode } from "react";
-import { CartProvider } from "../home_component/CartContext";
+import { CartProvider } from "../cart_component/CartContext";
+import { CartSummaryProvider } from "../cart_component/CartSummaryContext";
 
 const SharedLayout = ({ children }: { children: ReactNode }) => {
-  return <CartProvider>{children}</CartProvider>;
+  return (
+    <CartProvider>
+      <CartSummaryProvider>{children}</CartSummaryProvider>
+    </CartProvider>
+  );
 };
 
 export default SharedLayout;

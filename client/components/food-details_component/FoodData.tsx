@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 import { Button } from "../ui/button";
 import { FoodItem } from "../shared/interface";
 import { MoonLoader } from "react-spinners";
-import { useCart } from "../home_component/CartContext";
+import { useCart } from "../cart_component/CartContext";
 
 interface AddOnProps {
   src: string;

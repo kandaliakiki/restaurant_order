@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 import FoodCard from "../shared/FoodCard";
 import { MoonLoader } from "react-spinners";
 import { FoodItem } from "../shared/interface";
-import { useCart } from "./CartContext";
+import { useCart } from "../cart_component/CartContext";
 
 const TopDeals = () => {
   const [foodItems, setFoodItems] = useState<FoodItem[]>([]);

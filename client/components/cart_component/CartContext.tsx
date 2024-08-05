@@ -17,14 +17,14 @@ interface CartItem {
 interface CartContextType {
   cart: CartItem[];
   addToCart: (item: CartItem) => void;
-  removeFromCart: (productId: string) => void;
+  removeFromCart: (productId: string, addOns: string) => void;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
 const CART_STORAGE_KEY = "cart";
 const CART_EXPIRATION_KEY = "cart_expiration";
-const EXPIRATION_TIME = 5 * 60 * 1000; // 5 minutes in milliseconds
+const EXPIRATION_TIME = 10 * 60 * 1000; // 10 minutes in milliseconds
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [cart, setCart] = useState<CartItem[]>(() => {
@@ -88,9 +88,11 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     });
   };
 
-  const removeFromCart = (productId: string) => {
+  const removeFromCart = (productId: string, addOns: string) => {
     setCart((prevCart) =>
-      prevCart.filter((item) => item.productId !== productId)
+      prevCart.filter(
+        (item) => !(item.productId === productId && item.addOns === addOns)
+      )
     );
   };
 

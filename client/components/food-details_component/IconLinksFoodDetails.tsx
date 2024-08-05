@@ -3,17 +3,19 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { useCart } from "../home_component/CartContext";
+import { useCart } from "../cart_component/CartContext";
+import { useRouter } from "next/navigation";
 
 interface IconLinkProps {
   href: string;
   src: string;
   alt: string;
   badgeCount?: number;
+  onClick?: () => void;
 }
 
-const IconLink = ({ href, src, alt, badgeCount }: IconLinkProps) => (
-  <Link href={href} className="relative inline-block">
+const IconLink = ({ href, src, alt, badgeCount, onClick }: IconLinkProps) => (
+  <Link href={href} className="relative inline-block" onClick={onClick}>
     <Image
       alt={alt}
       src={src}
@@ -31,13 +33,15 @@ const IconLink = ({ href, src, alt, badgeCount }: IconLinkProps) => (
 
 const IconLinksFoodDetails = () => {
   const { cart } = useCart();
+  const router = useRouter();
 
   return (
     <div className="w-full px-4 pt-5 flex justify-between">
       <IconLink
-        href="/"
+        href="#"
         src="/assets/left-chevron.svg"
         alt="left-chevron-icon"
+        onClick={() => router.back()}
       />
       <div className="flex flex-col  gap-2 h-full">
         <IconLink href="/" src="/assets/heart-active.svg" alt="favorite-icon" />
