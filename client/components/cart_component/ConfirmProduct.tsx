@@ -6,8 +6,13 @@ import React, { useEffect, useState } from "react";
 import { useCart } from "./CartContext";
 import { useCartSummary } from "./CartSummaryContext";
 import CartSummary from "./CartSummary";
+import { PageState } from "@/app/(root)/cart/page";
 
-const ConfirmProduct = () => {
+interface ConfirmProductProps {
+  setCurrentPage: (page: PageState) => void;
+}
+
+const ConfirmProduct: React.FC<ConfirmProductProps> = ({ setCurrentPage }) => {
   const { cart, removeFromCart } = useCart();
   const { subtotal, adminFee, total, setSubtotal } = useCartSummary();
   const [detailedCart, setDetailedCart] = useState<
@@ -141,8 +146,11 @@ const ConfirmProduct = () => {
         <Button className="w-24 bg-white-background border-gray-500 text-gray-500 border-1 border ">
           Cancel
         </Button>
-        <Button className="w-full bg-vibrant-pink text-white ">
-          Confirm Product
+        <Button
+          className="w-full bg-vibrant-pink text-white "
+          onClick={() => setCurrentPage("confirmPurchase")}
+        >
+          Proceed to Purchase
         </Button>
       </div>
     </>

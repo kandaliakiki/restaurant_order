@@ -6,7 +6,7 @@ import OrderCartHeader from "@/components/cart_component/OrderCartHeader";
 import PurchasedMessage from "@/components/cart_component/PurchasedMessage";
 import React, { useState } from "react";
 
-type PageState = "confirmProduct" | "confirmPurchase" | "Purchased";
+export type PageState = "confirmProduct" | "confirmPurchase" | "Purchased";
 
 const Page = () => {
   const [currentPage, setCurrentPage] = useState<PageState>("confirmProduct");
@@ -21,8 +21,12 @@ const Page = () => {
         />
       )}
 
-      {currentPage === "confirmProduct" && <ConfirmProduct />}
-      {currentPage === "confirmPurchase" && <ConfirmPurchase />}
+      {currentPage === "confirmProduct" && (
+        <ConfirmProduct setCurrentPage={setCurrentPage} />
+      )}
+      {currentPage === "confirmPurchase" && (
+        <ConfirmPurchase setCurrentPage={setCurrentPage} />
+      )}
       {currentPage === "Purchased" && <PurchasedMessage />}
     </section>
   );

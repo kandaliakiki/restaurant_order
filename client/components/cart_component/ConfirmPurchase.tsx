@@ -3,8 +3,15 @@ import Image from "next/image";
 import React from "react";
 import CartSummary from "./CartSummary";
 import { useCartSummary } from "./CartSummaryContext";
+import { PageState } from "@/app/(root)/cart/page";
 
-const ConfirmPurchase = () => {
+interface ConfirmPurchaseProps {
+  setCurrentPage: (page: PageState) => void;
+}
+
+const ConfirmPurchase: React.FC<ConfirmPurchaseProps> = ({
+  setCurrentPage,
+}) => {
   const { subtotal, adminFee, total } = useCartSummary();
 
   return (
@@ -35,10 +42,16 @@ const ConfirmPurchase = () => {
       <CartSummary subtotal={subtotal} adminFee={adminFee} total={total} />
 
       <div className="flex w-full justify-between gap-3 ">
-        <Button className="w-24 bg-white-background border-gray-500 text-gray-500 border-1 border ">
+        <Button
+          className="w-24 bg-white-background border-gray-500 text-gray-500 border-1 border "
+          onClick={() => setCurrentPage("confirmProduct" as PageState)}
+        >
           Cancel
         </Button>
-        <Button className="w-full bg-vibrant-pink text-white ">
+        <Button
+          className="w-full bg-vibrant-pink text-white "
+          onClick={() => setCurrentPage("Purchased" as PageState)}
+        >
           Confirm Purchase
         </Button>
       </div>
