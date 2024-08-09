@@ -38,6 +38,46 @@ export function slideInOut() {
   );
 }
 
+export function slideOutIn() {
+  document.documentElement.animate(
+    [
+      {
+        opacity: 1,
+        transform: "translate(0, 0)",
+      },
+      {
+        opacity: 0,
+        transform: "translate(100px, 0)", // Move right
+      },
+    ],
+    {
+      duration: 400,
+      easing: "ease",
+      fill: "forwards",
+      pseudoElement: "::view-transition-old(root)",
+    }
+  );
+
+  document.documentElement.animate(
+    [
+      {
+        opacity: 0,
+        transform: "translate(-100px, 0)", // Start from left
+      },
+      {
+        opacity: 1,
+        transform: "translate(0, 0)",
+      },
+    ],
+    {
+      duration: 400,
+      easing: "ease",
+      fill: "forwards",
+      pseudoElement: "::view-transition-new(root)",
+    }
+  );
+}
+
 export function slideUpCover() {
   document.documentElement.animate(
     [

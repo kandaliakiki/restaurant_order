@@ -1,17 +1,31 @@
 import React from "react";
-import Link from "next/link";
 import Image from "next/image";
 import { BottomBarLink } from "../../constants"; // Adjust the import path as necessary
+import TransitionLink, { TransitionFunction } from "../shared/TransitionLink";
 
 interface IconBottomBarProps {
   link: BottomBarLink;
   pathname: string;
   badgeCount?: number;
+  getTransitionBasedOnPage: (
+    href: string,
+    pathname: string
+  ) => TransitionFunction; // Ensure correct typing
 }
 
-const IconBottomBar = ({ link, pathname, badgeCount }: IconBottomBarProps) => {
+const IconBottomBar = ({
+  link,
+  pathname,
+  badgeCount,
+  getTransitionBasedOnPage,
+}: IconBottomBarProps) => {
   return (
-    <Link href={link.route} key={link.label} className="relative inline-block">
+    <TransitionLink
+      onTransitionReady={getTransitionBasedOnPage(link.route, pathname)} // Use the prop here
+      href={link.route}
+      key={link.label}
+      className="relative inline-block"
+    >
       <Image
         width={32}
         height={32}
@@ -23,7 +37,7 @@ const IconBottomBar = ({ link, pathname, badgeCount }: IconBottomBarProps) => {
           {badgeCount}
         </span>
       )}
-    </Link>
+    </TransitionLink>
   );
 };
 

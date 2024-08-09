@@ -1,5 +1,6 @@
 export const bottomBarLinks = [
   {
+    id: 1,
     imgUrlActive: "/assets/home-active.svg",
     imgUrl: "/assets/home.svg",
     route: "/",
@@ -7,6 +8,7 @@ export const bottomBarLinks = [
     activeRoutes: ["/", "/categories"],
   },
   {
+    id: 2,
     imgUrlActive: "/assets/heart-active.svg",
     imgUrl: "/assets/heart.svg",
     route: "/favorite",
@@ -14,6 +16,7 @@ export const bottomBarLinks = [
     activeRoutes: ["/favorite"],
   },
   {
+    id: 3,
     imgUrlActive: "/assets/magnifier.svg",
     imgUrl: "/assets/magnifier.svg",
     route: "/search",
@@ -21,6 +24,7 @@ export const bottomBarLinks = [
     activeRoutes: ["/search"],
   },
   {
+    id: 4,
     imgUrlActive: "/assets/basket-active.svg",
     imgUrl: "/assets/basket.svg",
     route: "/cart",
@@ -28,6 +32,7 @@ export const bottomBarLinks = [
     activeRoutes: ["/cart"],
   },
   {
+    id: 5,
     imgUrlActive: "/assets/notification-active.svg",
     imgUrl: "/assets/notification.svg",
     route: "/notification",
@@ -37,6 +42,7 @@ export const bottomBarLinks = [
 ];
 
 export type BottomBarLink = {
+  id: number;
   imgUrlActive: string;
   imgUrl: string;
   route: string;

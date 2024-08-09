@@ -7,7 +7,7 @@ import usePreviousPath from "./usePreviousPath";
 import { usePathname } from "next/navigation";
 
 // Define allowed transition functions dynamically
-type TransitionFunction = keyof typeof animations;
+export type TransitionFunction = keyof typeof animations;
 
 const TransitionLink = ({
   href,
@@ -30,6 +30,7 @@ const TransitionLink = ({
       onClick={(e) => {
         e.preventDefault();
         localStorage.setItem("previousPath", pathname);
+        localStorage.setItem("currentPath", href);
         router.push(href, {
           onTransitionReady: animations[onTransitionReady],
         });
