@@ -1,10 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import React from "react";
 import { useCart } from "../cart_component/CartContext";
-import { useRouter } from "next/navigation";
+import { useTransitionRouter } from "next-view-transitions";
+import TransitionLink from "../shared/TransitionLink";
+import getPreviousPath from "../shared/usePreviousPath";
 
 interface IconLinkProps {
   href: string;
@@ -15,7 +16,11 @@ interface IconLinkProps {
 }
 
 const IconLink = ({ href, src, alt, badgeCount, onClick }: IconLinkProps) => (
-  <Link href={href} className="relative inline-block" onClick={onClick}>
+  <TransitionLink
+    href={href}
+    onTransitionReady="slideDownToBottom"
+    className="relative inline-block"
+  >
     <Image
       alt={alt}
       src={src}
@@ -28,20 +33,19 @@ const IconLink = ({ href, src, alt, badgeCount, onClick }: IconLinkProps) => (
         {badgeCount}
       </span>
     )}
-  </Link>
+  </TransitionLink>
 );
 
 const IconLinksFoodDetails = () => {
   const { cart } = useCart();
-  const router = useRouter();
+  const router = useTransitionRouter();
 
   return (
     <div className="w-full px-4 pt-5 flex justify-between">
       <IconLink
-        href="#"
+        href={getPreviousPath()}
         src="/assets/left-chevron.svg"
         alt="left-chevron-icon"
-        onClick={() => router.back()}
       />
       <div className="flex flex-col  gap-2 h-full">
         <IconLink href="/" src="/assets/heart-active.svg" alt="favorite-icon" />

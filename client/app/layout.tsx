@@ -1,3 +1,4 @@
+import { ViewTransitions } from "next-view-transitions";
 import "./globals.css";
 
 import SharedLayout from "@/components/shared/SharedLayout";
@@ -8,10 +9,12 @@ export default function HighestLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <SharedLayout>
-      <html lang="en">
-        <body>{children}</body>
-      </html>
-    </SharedLayout>
+    <ViewTransitions>
+      <SharedLayout>
+        <html lang="en">
+          <body>{children}</body>
+        </html>
+      </SharedLayout>
+    </ViewTransitions>
   );
 }

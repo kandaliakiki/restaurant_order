@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import { Button } from "../ui/button";
-import Link from "next/link";
+import TransitionLink from "./TransitionLink";
 
 interface FoodCardProps {
   name: string;
@@ -26,7 +26,10 @@ const FoodCard: React.FC<FoodCardProps> = ({
 }) => {
   return (
     <div className="h-full w-full bg-white rounded-lg p-3 pb-5 text-sm tracking-wide font-medium">
-      <Link href={`/food-details/${_id}`}>
+      <TransitionLink
+        href={`/food-details/${_id}`}
+        onTransitionReady="slideUpCover"
+      >
         <div>
           <p className="">{foodName}</p>
           <p className="text-vibrant-pink">$ {price}</p>
@@ -40,7 +43,7 @@ const FoodCard: React.FC<FoodCardProps> = ({
             ></Image>
           </div>
         </div>
-      </Link>
+      </TransitionLink>
       <div className="flex gap-1 items-center mt-2 justify-between">
         <Button
           variant="default"
