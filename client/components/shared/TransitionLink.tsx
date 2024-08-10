@@ -22,7 +22,6 @@ const TransitionLink = ({
 }) => {
   const router = useTransitionRouter();
   const pathname = usePathname();
-  const setPreviousPath = usePreviousPath();
 
   return (
     <a
@@ -30,7 +29,6 @@ const TransitionLink = ({
       onClick={(e) => {
         e.preventDefault();
         localStorage.setItem("previousPath", pathname);
-        localStorage.setItem("currentPath", href);
         router.push(href, {
           onTransitionReady: animations[onTransitionReady],
         });
