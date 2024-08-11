@@ -4,7 +4,7 @@ import Image from "next/image";
 import React from "react";
 import { useCart } from "../cart_component/CartContext";
 import { useTransitionRouter } from "next-view-transitions";
-import TransitionLink from "../shared/TransitionLink";
+import TransitionLink, { TransitionFunction } from "../shared/TransitionLink";
 import getPreviousPath from "../shared/usePreviousPath";
 
 interface IconLinkProps {
@@ -13,12 +13,20 @@ interface IconLinkProps {
   alt: string;
   badgeCount?: number;
   onClick?: () => void;
+  onTransitionReady?: TransitionFunction; // Added type for onTransitionReady
 }
 
-const IconLink = ({ href, src, alt, badgeCount, onClick }: IconLinkProps) => (
+const IconLink = ({
+  href,
+  src,
+  alt,
+  badgeCount,
+  onClick,
+  onTransitionReady = "slideDownToBottom", // Added default value
+}: IconLinkProps) => (
   <TransitionLink
     href={href}
-    onTransitionReady="slideDownToBottom"
+    onTransitionReady={onTransitionReady} // Updated to use onTransitionReady from props
     className="relative inline-block"
   >
     <Image
@@ -50,10 +58,11 @@ const IconLinksFoodDetails = () => {
       <div className="flex flex-col  gap-2 h-full">
         <IconLink href="/" src="/assets/heart-active.svg" alt="favorite-icon" />
         <IconLink
-          href="/"
+          href="/cart"
           src="/assets/basket-active.svg"
           alt="basket-icon"
           badgeCount={cart.length}
+          onTransitionReady="slideInOut"
         />
       </div>
     </div>

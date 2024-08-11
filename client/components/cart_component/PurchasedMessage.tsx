@@ -4,6 +4,7 @@ import React from "react";
 import CartSummary from "./CartSummary";
 import { useCartSummary } from "./CartSummaryContext";
 import Link from "next/link";
+import TransitionLink from "../shared/TransitionLink";
 
 const PurchasedMessage = () => {
   const { subtotal, adminFee, total } = useCartSummary();
@@ -25,11 +26,15 @@ const PurchasedMessage = () => {
       <Button className="w-full border-1 border border-vibrant-pink bg-white-background text-vibrant-pink text-lg font-normal">
         Check order details
       </Button>
-      <Link href="/" className="w-full">
+      <TransitionLink
+        href="/"
+        className="w-full"
+        onTransitionReady="slideOutIn"
+      >
         <Button className="w-full border-1 border border-vibrant-pink bg-vibrant-pink text-white text-lg font-normal">
           Continue Finding Food
         </Button>
-      </Link>
+      </TransitionLink>
     </div>
   );
 };

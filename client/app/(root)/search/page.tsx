@@ -7,6 +7,7 @@ import React, { useState, useEffect } from "react";
 import MoonLoader from "react-spinners/MoonLoader"; // Import MoonLoader
 import { FoodItem } from "@/components/shared/interface";
 import { useCart } from "@/components/cart_component/CartContext";
+import { motion, AnimatePresence } from "framer-motion"; // Import Framer Motion
 
 const page = () => {
   const [isFilterClicked, setIsFilterClicked] = useState(false);
@@ -77,13 +78,24 @@ const page = () => {
         setIsFilterClicked={setIsFilterClicked}
         setTextToSearch={setTextToSearch}
       />
-      <FilterSection
-        sliderValue={sliderValue}
-        setSliderValue={setSliderValue}
-        checkedFoodTypes={checkedFoodTypes}
-        setCheckedFoodTypes={setCheckedFoodTypes}
-        onApplyFilters={handleApplyFilters}
-      />
+      <AnimatePresence>
+        {isFilterClicked && ( // Conditionally render FilterSection
+          <motion.div
+            initial={{ opacity: 0, y: -20 }} // Start slightly above
+            animate={{ opacity: 1, y: 0 }} // Slide down to original position
+            exit={{ opacity: 0, y: -20 }} // Slide up and fade out
+            transition={{ duration: 0.3 }} // Duration of the animation
+          >
+            <FilterSection
+              sliderValue={sliderValue}
+              setSliderValue={setSliderValue}
+              checkedFoodTypes={checkedFoodTypes}
+              setCheckedFoodTypes={setCheckedFoodTypes}
+              onApplyFilters={handleApplyFilters}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
       <h3 className="text-lg font-medium mt-2">
         Suggestions from previous search
       </h3>
