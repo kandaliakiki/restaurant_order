@@ -2,6 +2,7 @@ import Image from "next/image";
 import React from "react";
 import { Button } from "../ui/button";
 import TransitionLink from "./TransitionLink";
+import FavoriteButton from "./FavoriteButton";
 
 interface FoodCardProps {
   name: string;
@@ -53,7 +54,8 @@ const FoodCard: React.FC<FoodCardProps> = ({
           Add to Cart{" "}
         </Button>
 
-        <Button
+        <FavoriteButton></FavoriteButton>
+        {/* <Button
           variant="default"
           className="text-[0.8rem] h-[1.5rem] p-2 px-[0.3rem] bg-white-background flex items-center"
           onClick={() => console.log("asu")}
@@ -69,7 +71,7 @@ const FoodCard: React.FC<FoodCardProps> = ({
             height={18}
             className="bg-transparent "
           ></Image>
-        </Button>
+        </Button> */}
       </div>
     </div>
   );

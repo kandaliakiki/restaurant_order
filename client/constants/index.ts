@@ -11,9 +11,9 @@ export const bottomBarLinks = [
     id: 2,
     imgUrlActive: "/assets/heart-active.svg",
     imgUrl: "/assets/heart.svg",
-    route: "/favorite",
+    route: "/favorites",
     label: "Favorite",
-    activeRoutes: ["/favorite"],
+    activeRoutes: ["/favorites"],
   },
   {
     id: 3,

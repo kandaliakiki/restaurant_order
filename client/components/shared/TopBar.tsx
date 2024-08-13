@@ -4,6 +4,7 @@ import React from "react";
 import { Button } from "../ui/button";
 import { SignedIn, SignOutButton } from "@clerk/nextjs";
 import Link from "next/link";
+import UserLocation from "./UserLocation";
 
 const TopBar = async () => {
   let user;
@@ -16,10 +17,7 @@ const TopBar = async () => {
   }
   return (
     <div className="flex justify-between items-center w-full">
-      <div>
-        <p className="text-[0.8rem]">My Location</p>
-        <p className="text-[1rem] text-vibrant-pink">Jakarta, Indonesia</p>
-      </div>
+      <UserLocation></UserLocation>
       {user ? (
         <div className="flex items-center">
           <SignedIn>
