@@ -10,6 +10,7 @@ import {
   getFoodById,
   getFoodByName,
 } from "./lib/actions/food.actions";
+import { updateUser } from "./lib/actions/user.actions";
 
 // Specify the path to your .env.local file
 dotenv.config({ path: ".env.local" });
@@ -65,6 +66,18 @@ app.get("/api/food-filter", async (req, res) => {
     res.status(200).json(foodItems);
   } catch (error) {
     res.status(500).json({ message: "Failed to fetch filtered food items" });
+  }
+});
+
+// API endpoint to update user
+app.post("/api/updateuser", async (req, res) => {
+  const { id, username } = req.body;
+  try {
+    // Call updateUser function from user.actions.ts with id and username
+    await updateUser({ userId: id, userName: username });
+    res.status(200).json({ message: "User updated successfully" });
+  } catch (error) {
+    res.status(500).json({ message: "Failed to update user" });
   }
 });
 

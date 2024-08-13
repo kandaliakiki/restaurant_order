@@ -4,6 +4,7 @@ const nextConfig = {
     remotePatterns: [
       { hostname: "storage.googleapis.com" },
       { hostname: "drive.google.com" }, // Added Google Drive hostname
+      { hostname: "img.clerk.com" },
     ],
   },
 };
