@@ -3,6 +3,7 @@ import React from "react";
 import { Button } from "../ui/button";
 import TransitionLink from "./TransitionLink";
 import FavoriteButton from "./FavoriteButton";
+import { SignedIn } from "@clerk/nextjs";
 
 interface FoodCardProps {
   name: string;
@@ -54,24 +55,9 @@ const FoodCard: React.FC<FoodCardProps> = ({
           Add to Cart{" "}
         </Button>
 
-        <FavoriteButton></FavoriteButton>
-        {/* <Button
-          variant="default"
-          className="text-[0.8rem] h-[1.5rem] p-2 px-[0.3rem] bg-white-background flex items-center"
-          onClick={() => console.log("asu")}
-        >
-          <Image
-            alt="heart-icon"
-            src={
-              isFavorite
-                ? "/assets/heart-active.svg"
-                : "/assets/heart-pink-outline.svg"
-            }
-            width={18}
-            height={18}
-            className="bg-transparent "
-          ></Image>
-        </Button> */}
+        <SignedIn>
+          <FavoriteButton></FavoriteButton>
+        </SignedIn>
       </div>
     </div>
   );

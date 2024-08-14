@@ -2,13 +2,11 @@
 
 import React, { useState } from "react";
 import { Button } from "../ui/button";
-import Lottie, { useLottie } from "lottie-react";
 import Image from "next/image"; // Ensure you import the Image component
-import animationData from "../../public/animations/heart-animation.json";
 import HeartAnimation from "./HeartAnimation";
 
 const FavoriteButton = () => {
-  const [isFavorite, setIsFavorite] = useState(true);
+  const [isFavorite, setIsFavorite] = useState(false);
   const [animate, setAnimate] = useState(false); // New state for animation control
 
   const handleClick = () => {
