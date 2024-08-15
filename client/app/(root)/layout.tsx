@@ -24,16 +24,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
-      <html lang="en">
-        <body className={`${inter.className} ${oswald.variable}`}>
-          <main className="flex flex-col overflow-auto min-h-screen bg-white-background px-4 py-2 font-oswald font-medium content-container">
-            <TopBar></TopBar>
-            {children}
-          </main>
-          <Bottombar></Bottombar>
-        </body>
-      </html>
-    </ClerkProvider>
+    <html lang="en">
+      <body className={`${inter.className} ${oswald.variable}`}>
+        <main className="flex flex-col overflow-auto min-h-screen bg-white-background px-4 py-2 font-oswald font-medium content-container">
+          <TopBar></TopBar>
+          {children}
+        </main>
+        <Bottombar></Bottombar>
+      </body>
+    </html>
   );
 }

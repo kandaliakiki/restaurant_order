@@ -104,3 +104,8 @@ export const getFilteredFood = async (
     throw new Error("Failed to fetch filtered food items");
   }
 };
+
+export const getFoodByIds = async (ids: string[]) => {
+  await connectToDB();
+  return await Food.find({ _id: { $in: ids } });
+};

@@ -1,7 +1,12 @@
 import Image from "next/image";
 import React from "react";
 import { Button } from "../ui/button";
-import { SignedIn, SignedOut, SignOutButton } from "@clerk/nextjs";
+import {
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  SignOutButton,
+} from "@clerk/nextjs";
 import Link from "next/link";
 import UserLocation from "./UserLocation";
 import { currentUser } from "@clerk/nextjs/server";
@@ -15,6 +20,7 @@ const TopBar = async () => {
     console.error("Error fetching user:", error);
     user = null; // Handle the error by setting user to null
   }
+
   return (
     <div className="flex justify-between items-center w-full">
       <UserLocation></UserLocation>
@@ -41,11 +47,11 @@ const TopBar = async () => {
         </div>
       </SignedIn>
       <SignedOut>
-        <Link href="/sign-in" className="cursor-pointer">
+        <SignInButton>
           <Button className="bg-vibrant-pink text-white text-base">
             Sign In
           </Button>
-        </Link>
+        </SignInButton>
       </SignedOut>
     </div>
   );

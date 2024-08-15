@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 import { Button } from "../ui/button";
 import TransitionLink from "./TransitionLink";
-import FavoriteButton from "./FavoriteButton";
+import FavoriteButton from "../favorite_component/FavoriteButton";
 import { SignedIn } from "@clerk/nextjs";
 
 interface FoodCardProps {
@@ -56,7 +56,7 @@ const FoodCard: React.FC<FoodCardProps> = ({
         </Button>
 
         <SignedIn>
-          <FavoriteButton></FavoriteButton>
+          <FavoriteButton foodId={_id}></FavoriteButton>
         </SignedIn>
       </div>
     </div>

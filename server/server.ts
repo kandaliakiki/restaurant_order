@@ -9,8 +9,13 @@ import {
   getFilteredFood,
   getFoodById,
   getFoodByName,
+  getFoodByIds,
 } from "./lib/actions/food.actions";
-import { updateUser } from "./lib/actions/user.actions";
+import {
+  updateUser,
+  toggleFavoriteFood,
+  getFavoriteFoods,
+} from "./lib/actions/user.actions";
 
 // Specify the path to your .env.local file
 dotenv.config({ path: ".env.local" });
@@ -78,6 +83,42 @@ app.post("/api/updateuser", async (req, res) => {
     res.status(200).json({ message: "User updated successfully" });
   } catch (error) {
     res.status(500).json({ message: "Failed to update user" });
+  }
+});
+
+// API endpoint to toggle favorite food
+app.post("/api/toggle-favorite-food", async (req, res) => {
+  const { userId, foodId } = req.body; // Extract userId and foodId from request body
+  try {
+    await toggleFavoriteFood(userId, foodId); // Call toggleFavoriteFood function
+    res.status(200).json({ message: "Favorite food toggled successfully" });
+  } catch (error) {
+    res.status(500).json({ message: "Failed to toggle favorite food" });
+  }
+});
+
+// API endpoint to get all favorite foods for a user
+app.get("/api/favorite-foods/:userId", async (req, res) => {
+  const { userId } = req.params;
+  try {
+    const favoriteFoods = await getFavoriteFoods(userId); // Call the new function
+    res.status(200).json(favoriteFoods);
+  } catch (error) {
+    res.status(500).json({ message: "Failed to fetch favorite foods" });
+  }
+});
+
+// API endpoint to get food items by an array of IDs
+app.post("/api/food-by-ids", async (req, res) => {
+  const { ids } = req.body; // Expecting an array of IDs in the request body
+  try {
+    // Ensure ids is an array and filter out any invalid IDs
+    const foodItems = await getFoodByIds(
+      ids.filter((id: string) => mongoose.Types.ObjectId.isValid(id)) // Specify 'id' type as 'string'
+    );
+    res.status(200).json(foodItems);
+  } catch (error) {
+    res.status(500).json({ message: "Failed to fetch food items by IDs" });
   }
 });
 
