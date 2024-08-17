@@ -25,8 +25,8 @@ const UserLocation = () => {
 
   return (
     <div>
-      <p className="text-[0.8rem]">My Location</p>
-      <p className="text-[1rem] text-vibrant-pink">
+      <p className="text-[0.8rem]  md:text-xl">My Location</p>
+      <p className="text-[1rem] md:text-2xl text-vibrant-pink">
         {location.city === "Location not available"
           ? location.city
           : `${location.city}, ${location.country}`}

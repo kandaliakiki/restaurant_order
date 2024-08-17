@@ -48,7 +48,7 @@ const TopBar = async () => {
       </SignedIn>
       <SignedOut>
         <SignInButton>
-          <Button className="bg-vibrant-pink text-white text-base">
+          <Button className="bg-vibrant-pink text-white text-base md:text-2xl md:p-6  ">
             Sign In
           </Button>
         </SignInButton>

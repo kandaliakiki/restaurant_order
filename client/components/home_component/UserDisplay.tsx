@@ -27,9 +27,13 @@ const UserDisplay = async () => {
   return (
     <div className="lg:text-center">
       {user ? (
-        <h1 className="text-2xl font-medium mt-3">Hi, {user.firstName}</h1>
+        <h1 className="text-2xl md:text-3xl xl:text-4xl font-medium mt-3">
+          Hi, {user.firstName}
+        </h1>
       ) : (
-        <h1 className="text-2xl font-medium mt-3">Hi, Guest</h1>
+        <h1 className="text-2xl md:text-3xl xl:text-4xl font-medium mt-3">
+          Hi, Guest
+        </h1>
       )}
     </div>
   );
