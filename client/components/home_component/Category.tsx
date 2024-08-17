@@ -17,7 +17,7 @@ const Category = () => {
             <TransitionLink
               href={`/categories/${category.route}`}
               key={category.label}
-              className="bg-white flex items-center rounded-lg p-1 h-20  min-[380px]:h-32  md:h-40 lg:h-56 xl:h-72 aspect-square justify-center"
+              className="bg-white flex items-center rounded-lg p-1 h-20    md:h-40 lg:h-56 xl:h-72 aspect-square justify-center"
               onTransitionReady="slideInOut"
             >
               <Image

@@ -51,7 +51,7 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = ({ foodId }) => {
   return (
     <Button
       variant="default"
-      className="text-[0.8rem] h-[1.5rem] w-[2rem]  px-[0.3rem] bg-white-background flex items-center"
+      className="text-[0.8rem] aspect-square h-[1.5rem]  md:h-[2.2rem] xl:h-[3rem] xl:w-[3rem] px-[0.3rem] bg-white-background flex items-center"
       onClick={handleClick}
     >
       {isFavorite && animate ? ( // Check for animation state
@@ -62,6 +62,7 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = ({ foodId }) => {
           src="/assets/heart-active-2.svg" // New source for filled heart
           width={18}
           height={18}
+          className="md:w-[100%] aspect-square"
         />
       ) : (
         <Image
@@ -69,6 +70,7 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = ({ foodId }) => {
           src="/assets/heart-pink-outline.svg"
           width={18}
           height={18}
+          className="md:w-[100%] aspect-square "
         />
       )}
     </Button>

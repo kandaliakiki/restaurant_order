@@ -53,7 +53,9 @@ const TopDeals = () => {
 
   return (
     <section>
-      <h1 className="mt-3 my-2 text-2xl">Top Deals</h1>
+      <h1 className="mt-3 my-2 text-2xl md:text-3xl xl:text-4xl  md:my-3 xl:my-5">
+        Top Deals
+      </h1>
 
       {loading ? (
         <div className="flex items-center justify-center h-full">

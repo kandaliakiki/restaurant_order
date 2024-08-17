@@ -6,7 +6,7 @@ const HeroSection = () => {
   return (
     <section className="relative  w-full h-auto rounded-2xl bg-vibrant-pink  text-white p-3 py-1  md:bg-hero-image md:bg-center  lg:py-10  ">
       <div className="absolute inset-0 z-0 bg-black opacity-60 rounded-2xl md:block hidden "></div>
-      <div className=" relative flex justify-between md:justify-center   xl:gap-52  items-center z-10 ">
+      <div className=" relative flex justify-between md:justify-center   min-[1400px]:gap-52  items-center z-10 ">
         <div className="text-left">
           <h1 className="   text-2xl md:text-6xl lg:text-8xl md:text-yellow-300  ">
             Discover a<br></br> World of Cuisines
