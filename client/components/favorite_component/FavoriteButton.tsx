@@ -14,10 +14,8 @@ interface FavoriteButtonProps {
 
 const FavoriteButton: React.FC<FavoriteButtonProps> = ({ foodId }) => {
   // Update component to accept props
-  const { favoriteFoods, fetchFavoriteFoods } = useFavoriteFoods() || []; // Ensure favoriteFoods is an array
-  const [isFavorite, setIsFavorite] = useState(
-    favoriteFoods.includes(foodId) // No need for the ternary check now
-  );
+  const { favoriteFoods, fetchFavoriteFoods } = useFavoriteFoods(); // Ensure favoriteFoods is an array
+  const [isFavorite, setIsFavorite] = useState(false);
   const [animate, setAnimate] = useState(false); // New state for animation control
   const { userId } = useAuth(); // Replace with actual user ID
 
@@ -42,7 +40,12 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = ({ foodId }) => {
   };
 
   useEffect(() => {
-    fetchFavoriteFoods();
+    const fetchData = async () => {
+      // Create an async function
+      await fetchFavoriteFoods();
+      setIsFavorite(favoriteFoods.includes(foodId));
+    };
+    fetchData(); // Call the async function
   }, []);
 
   return (

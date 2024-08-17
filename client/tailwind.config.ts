@@ -18,6 +18,9 @@ const config = {
       },
     },
     extend: {
+      backgroundImage: {
+        "hero-image": "url('/assets/1.jpg')",
+      },
       fontFamily: {
         oswald: ["var(--oswald)", "cursive"],
       },

@@ -1,7 +1,7 @@
 "use client";
 
 import { foodDeals } from "@/constants";
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import FoodCard from "../shared/FoodCard";
 import { MoonLoader } from "react-spinners";
 import { FoodItem } from "../shared/interface";
@@ -12,42 +12,44 @@ import { useAuth } from "@clerk/nextjs";
 const TopDeals = () => {
   const [foodItems, setFoodItems] = useState<FoodItem[]>([]);
   const [loading, setLoading] = useState(true);
-  const { addToCart } = useCart(); // Destructure addToCart from useCart
+  const { addToCart } = useCart();
   const { isSignedIn } = useAuth();
   const { fetchFavoriteFoods, clearFavoriteFoods } = useFavoriteFoods();
-  useEffect(() => {
-    const backendUrl = process.env.NEXT_PUBLIC_BACKEND_ENDPOINT;
-    let retryCount = 0;
-    const maxRetries = 5;
 
-    const fetchData = async () => {
-      try {
-        const response = await fetch(`${backendUrl}/api/food`);
-        const data = await response.json();
-        if (data.length === 0 && retryCount < maxRetries) {
-          retryCount++;
-          fetchData(); // Retry immediately if conditions are met
-        } else {
-          setFoodItems(data);
-          setLoading(false); // Set loading to false after data is fetched
-        }
-      } catch (error) {
-        console.error("Error fetching data:", error);
-        if (retryCount < maxRetries) {
-          retryCount++;
-          fetchData(); // Retry on error
-        } else {
-          setLoading(false); // Stop loading after max retries
-        }
+  const backendUrl = process.env.NEXT_PUBLIC_BACKEND_ENDPOINT;
+  let retryCount = 0;
+  const maxRetries = 5;
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch(`${backendUrl}/api/food`);
+      const data = await response.json();
+      if (data.length === 0 && retryCount < maxRetries) {
+        retryCount++;
+        fetchData();
+      } else {
+        setFoodItems(data);
+        setLoading(false);
       }
-    };
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      if (retryCount < maxRetries) {
+        retryCount++;
+        fetchData();
+      } else {
+        setLoading(false);
+      }
+    }
+  };
+
+  useEffect(() => {
     if (isSignedIn) {
       fetchFavoriteFoods();
     } else {
       clearFavoriteFoods();
     }
     fetchData();
-  }, []);
+  }, [isSignedIn]); // Only run when isSignedIn changes
 
   return (
     <section>
@@ -58,20 +60,20 @@ const TopDeals = () => {
           <MoonLoader size={50} color={"#fd1e52"} loading={loading} />
         </div>
       ) : (
-        <div className="grid grid-cols-2 gap-4 font-normal">
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 font-normal">
           {foodItems.map((foodItem) => (
             <FoodCard
               key={foodItem.name}
               isFavorite={false}
               addToCart={() =>
                 addToCart({
-                  productId: foodItem._id, // Use _id from FoodItem
-                  quantity: 1, // Default quantity
-                  addOns: "", // Default addOns
+                  productId: foodItem._id,
+                  quantity: 1,
+                  addOns: "",
                 })
-              } // Pass addToCart function
-              {...foodItem} // Pass the rest of foodItem properties
-            ></FoodCard>
+              }
+              {...foodItem}
+            />
           ))}
         </div>
       )}

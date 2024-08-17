@@ -25,7 +25,7 @@ const UserDisplay = async () => {
   }
 
   return (
-    <div>
+    <div className="lg:text-center">
       {user ? (
         <h1 className="text-2xl font-medium mt-3">Hi, {user.firstName}</h1>
       ) : (
