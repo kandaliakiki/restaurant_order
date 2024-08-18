@@ -72,7 +72,7 @@ const page = () => {
 
   return (
     <section className="flex flex-col gap-2 mt-2">
-      <h1 className="text-2xl font-medium ">Search</h1>
+      <h1 className="section-title lg:my-1 ">Search</h1>
       <SearchSection
         isFilterClicked={isFilterClicked}
         setIsFilterClicked={setIsFilterClicked}
@@ -96,7 +96,7 @@ const page = () => {
           </motion.div>
         )}
       </AnimatePresence>
-      <h3 className="text-lg font-medium mt-2">
+      <h3 className="section-subtitle font-medium mt-2">
         Suggestions from previous search
       </h3>
       {loading ? (
@@ -105,7 +105,7 @@ const page = () => {
           {/* Display loading spinner */}
         </div>
       ) : (
-        <div className="grid grid-cols-2 gap-4 font-normal">
+        <div className="foodcard-grid font-normal">
           {filteredFood.length > 0 ? (
             filteredFood.map((foodItem) => (
               <FoodCard

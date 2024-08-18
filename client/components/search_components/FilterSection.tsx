@@ -51,11 +51,11 @@ const FilterSection: React.FC<FilterSectionProps> = ({
 
   return (
     <>
-      <h2 className="text-xl font-medium mt-2 ">Filters</h2>
-      <div className="flex flex-col gap-3 w-full ">
-        <div className="bg-white w-full shadow-lg  rounded-md px-3 py-1  text-base font-medium text-gray-500 ">
+      <h2 className="section-title mt-2 xl:my-2 ">Filters</h2>
+      <div className="flex flex-col gap-3 w-full text-base lg:text-lg">
+        <div className="bg-white w-full shadow-lg  rounded-md px-3 py-1  font-medium text-gray-500 ">
           <p>Max Price</p>
-          <div className="flex justify-between items-center gap-2 text-sm ">
+          <div className="flex justify-between items-center gap-2">
             <p className="text-center mt-2">0</p>{" "}
             <Input
               type="range"
@@ -69,11 +69,14 @@ const FilterSection: React.FC<FilterSectionProps> = ({
             <p className="text-center flex mt-2">$&nbsp;{sliderValue}</p>{" "}
           </div>
         </div>
-        <div className="bg-white w-full shadow-lg  rounded-md px-3 py-1  text-base font-medium text-gray-500 ">
+        <div className="bg-white w-full shadow-lg  rounded-md px-3 py-1  font-medium text-gray-500 ">
           <p>Food Type</p>
-          <div className="flex justify-between items-center gap-2 text-sm mt-1 text-gray-400 font-medium ">
+          <div className="flex  justify-between items-center gap-2 mt-1 text-gray-400">
             {["burger", "pizza", "chicken", "fries"].map((foodType) => (
-              <label key={foodType} className="flex items-center gap-2 ">
+              <label
+                key={foodType}
+                className="flex items-center gap-2 md:text-xl"
+              >
                 <input
                   type="checkbox"
                   value={foodType}
@@ -89,7 +92,7 @@ const FilterSection: React.FC<FilterSectionProps> = ({
       </div>
       <div className="flex items-center justify-center w-full mt-1">
         <Button
-          className="bg-vibrant-pink text-white h-[2rem] text-sm font-normal"
+          className="bg-vibrant-pink text-white h-[2rem] text-base lg:text-xl lg:h-[2.5rem] lg:mt-2 font-normal"
           onClick={onApplyFilters}
         >
           Apply

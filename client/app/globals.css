@@ -82,6 +82,18 @@
   @apply bg-vibrant-light-pink w-16   flex self-center items-center justify-evenly rounded-md text-white;
 }
 
+.section-title {
+  @apply text-2xl md:text-3xl xl:text-4xl;
+}
+
+.section-subtitle {
+  @apply text-lg md:text-xl xl:text-2xl;
+}
+
+.foodcard-grid {
+  @apply grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4;
+}
+
 @layer base {
   * {
     @apply border-border;

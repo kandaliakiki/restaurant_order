@@ -43,7 +43,7 @@ const FilteredFoodCategory = ({ category }: { category: string }) => {
           <MoonLoader size={50} color={"#fd1e52"} loading={loading} />
         </div>
       ) : (
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 font-normal">
+        <div className="foodcard-grid font-normal">
           {filteredFood.map((foodItem) => (
             <FoodCard
               key={foodItem.name}
