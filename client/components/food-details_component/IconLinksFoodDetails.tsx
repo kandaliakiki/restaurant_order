@@ -32,15 +32,17 @@ const IconLink = ({
     <Image
       alt={alt}
       src={src}
-      className="bg-white rounded-full w-8 h-8 p-1"
+      className="bg-white rounded-full w-8 h-8 md:w-10 md:h-10 p-1"
       width={10}
       height={10}
     />
-    {badgeCount !== undefined && badgeCount > 0 && (
-      <span className="absolute -top-2 -right-1 inline-flex items-center justify-center px-[6px] py-[3px] text-xs font-bold leading-none text-vibrant-pink bg-white rounded-full ">
-        {badgeCount}
-      </span>
-    )}
+    <span
+      className={`absolute -top-2 md:-top-3 -right-1 md:-right-2   inline-flex items-center justify-center aspect-square  w-[1.15rem] md:w-6 text-xs md:text-base font-bold leading-none text-vibrant-pink bg-white rounded-full transition-all duration-300 ease-in-out ${
+        badgeCount && badgeCount > 0 ? "scale-100" : "scale-0"
+      }`}
+    >
+      {badgeCount}
+    </span>
   </TransitionLink>
 );
 
@@ -49,14 +51,13 @@ const IconLinksFoodDetails = () => {
   const router = useTransitionRouter();
 
   return (
-    <div className="w-full px-4 pt-5 flex justify-between">
+    <div className="w-full md:w-3/4 md:mx-auto px-4 pt-5 flex justify-between">
       <IconLink
         href={getPreviousPath()}
         src="/assets/left-chevron.svg"
         alt="left-chevron-icon"
       />
       <div className="flex flex-col  gap-2 h-full">
-        <IconLink href="/" src="/assets/heart-active.svg" alt="favorite-icon" />
         <IconLink
           href="/cart"
           src="/assets/basket-active.svg"

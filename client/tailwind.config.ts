@@ -18,6 +18,14 @@ const config = {
       },
     },
     extend: {
+      screens: {
+        "landscape-lg": {
+          raw: "(min-width: 1024px) and (orientation: landscape)",
+        },
+        "max-landscape-lg": {
+          raw: "(max-width: 1024px) and (orientation: landscape)",
+        },
+      },
       backgroundImage: {
         "hero-image": "url('/assets/1.jpg')",
       },

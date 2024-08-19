@@ -4,7 +4,7 @@ import React from "react";
 
 const page = ({ params }: { params: { id: string } }) => {
   return (
-    <div>
+    <div className="min-h-screen">
       <IconLinksFoodDetails></IconLinksFoodDetails>
 
       <FoodData _id={params.id}></FoodData>

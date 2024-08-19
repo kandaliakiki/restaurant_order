@@ -101,7 +101,7 @@ const FoodData = ({ _id }: { _id: string }) => {
   return (
     <>
       {loading ? (
-        <div className=" fixed bottom-0 px-5 pt-28 w-full bg-white-background text-black flex flex-col items-center justify-start h-3/4 rounded-t-3xl">
+        <div className=" absolute bottom-0 px-5 pt-28 w-full bg-white-background text-black flex flex-col items-center justify-start h-3/4 rounded-t-3xl">
           <MoonLoader size={50} color={"#fd1e52"} loading={loading} />
 
           {foodDetail && (
@@ -118,95 +118,109 @@ const FoodData = ({ _id }: { _id: string }) => {
         </div>
       ) : (
         foodDetail && (
-          <div className="fixed bottom-0 px-5 pt-28 w-full bg-white-background text-black flex flex-col items-start justify-start h-3/4 rounded-t-3xl">
-            <div className="absolute top-[-8rem] left-1/2 transform -translate-x-1/2 flex justify-center items-start  w-[250px] h-[250px] p-1">
+          <div className="absolute  bottom-0 px-5 pt-28 w-full bg-white text-black flex flex-col items-start justify-start  h-3/4  max-landscape-lg:h-1/2 landscape-lg:h-3/4 rounded-t-3xl">
+            <div className="absolute top-[-8rem] md:top-[-12rem] left-1/2 transform -translate-x-1/2 flex justify-center items-start  w-[250px] h-[250px] md:w-[384px] md:h-[384px] p-1">
               <Image
                 width={250}
                 height={250}
                 alt="food-detail-img"
                 src={foodDetail.imageUrl}
+                className="md:w-96 md:h-96"
               />
             </div>
-            <div className="bg-vibrant-light-pink w-24 mt-2 h-6 flex self-center items-center justify-evenly rounded-lg text-white">
-              <Button
-                onClick={handleDecrease}
-                className="bg-vibrant-pink text-center rounded-lg h-full"
-              >
-                -
-              </Button>
-              <span className="flex-1 text-center">{quantity}</span>
-              <Button
-                onClick={handleIncrease}
-                className="bg-vibrant-pink text-center rounded-lg h-full"
-              >
-                +
-              </Button>
-            </div>
-            <div className="flex justify-between items-center w-full h-auto mt-3">
-              <p className="text-xl font-semibold">{foodDetail.name}</p>
-              <p className="text-xl text-vibrant-pink font-bold">
-                $ {foodDetail.price}
+            <section className="md:w-3/4 md:mx-auto">
+              <div className="bg-vibrant-light-pink w-24  md:w-32 mt-2 md:mt-24 mx-auto h-6 md:h-9 flex self-center items-center justify-evenly rounded-lg text-white">
+                <Button
+                  onClick={handleDecrease}
+                  className="bg-vibrant-pink text-center rounded-lg h-full z-10"
+                >
+                  -
+                </Button>
+                <span className="flex-1 text-center md:text-xl">
+                  {quantity}
+                </span>
+                <Button
+                  onClick={handleIncrease}
+                  className="bg-vibrant-pink text-center rounded-lg h-full z-10"
+                >
+                  +
+                </Button>
+              </div>
+
+              <div className="flex justify-between items-center w-full h-auto mt-3">
+                <p className="text-xl md:text-3xl font-semibold ">
+                  {foodDetail.name}
+                </p>
+                <p className="text-xl md:text-3xl text-vibrant-pink font-bold ">
+                  $ {foodDetail.price}
+                </p>
+              </div>
+              <p className="text-sm md:text-lg font-light">
+                {foodDetail.subtitle}
               </p>
-            </div>
-            <p className="text-sm font-light">{foodDetail.subtitle}</p>
-            <div className="flex w-full gap-5 text-[0.7rem] font-normal mt-3">
-              <div className="flex gap-1 justify-center items-center px-2 rounded-lg border border-black">
-                <Image
-                  alt="rating-star"
-                  src="/assets/star.svg"
-                  width={12}
-                  height={12}
-                />
-                {foodDetail.rating} stars
+              <div className="flex w-full gap-5 text-[0.7rem] md:text-base font-normal mt-3">
+                <div className="flex gap-1 justify-center items-center px-2 rounded-lg border border-black ">
+                  <Image
+                    alt="rating-star"
+                    src="/assets/star.svg"
+                    width={12}
+                    height={12}
+                    className="md:w-4 md:h-4"
+                  />
+                  {foodDetail.rating} stars
+                </div>
+                <div className="flex gap-1 justify-center items-center px-2 rounded-lg border border-black">
+                  <Image
+                    alt="waiting-time"
+                    src="/assets/stopwatch.svg"
+                    width={12}
+                    height={12}
+                    className="md:w-4 md:h-4"
+                  />
+                  {foodDetail.timeToServe}
+                </div>
               </div>
-              <div className="flex gap-1 justify-center items-center px-2 rounded-lg border border-black">
-                <Image
-                  alt="waiting-time"
-                  src="/assets/stopwatch.svg"
-                  width={12}
-                  height={12}
-                />
-                {foodDetail.timeToServe}
+              <p className="font-normal text-sm md:text-lg mt-3">
+                {foodDetail.description}
+              </p>
+              <p className="font-medium text-lg md:text-2xl mt-3">Add-ons</p>
+              <div className="flex w-full gap-3 text-[0.8rem] md:text-base font-normal mt-3 flex-wrap">
+                {[
+                  "Extra Cheese",
+                  "Extra Bacon",
+                  "Mayo Sauce",
+                  "Tomato Sauce",
+                ].map((addOn) => (
+                  <AddOn
+                    key={addOn}
+                    src={
+                      chosenAddOns.includes(addOn)
+                        ? "/assets/cross.svg"
+                        : "/assets/plus.svg"
+                    }
+                    alt="add-ons-icon"
+                    text={addOn}
+                    borderColor={
+                      chosenAddOns.includes(addOn)
+                        ? "border-vibrant-pink"
+                        : "border-gray-500"
+                    }
+                    textColor={
+                      chosenAddOns.includes(addOn)
+                        ? "text-vibrant-pink"
+                        : "text-gray-500"
+                    }
+                    onClick={() => toggleAddOn(addOn)}
+                  />
+                ))}
               </div>
-            </div>
-            <p className="font-normal text-sm mt-3">{foodDetail.description}</p>
-            <p className="font-medium text-lg mt-3">Add-ons</p>
-            <div className="flex w-full gap-3 text-[0.8rem] font-normal mt-3 flex-wrap">
-              {[
-                "Extra Cheese",
-                "Extra Bacon",
-                "Mayo Sauce",
-                "Tomato Sauce",
-              ].map((addOn) => (
-                <AddOn
-                  key={addOn}
-                  src={
-                    chosenAddOns.includes(addOn)
-                      ? "/assets/cross.svg"
-                      : "/assets/plus.svg"
-                  }
-                  alt="add-ons-icon"
-                  text={addOn}
-                  borderColor={
-                    chosenAddOns.includes(addOn)
-                      ? "border-vibrant-pink"
-                      : "border-gray-500"
-                  }
-                  textColor={
-                    chosenAddOns.includes(addOn)
-                      ? "text-vibrant-pink"
-                      : "text-gray-500"
-                  }
-                  onClick={() => toggleAddOn(addOn)}
-                />
-              ))}
-            </div>
-            <Button
-              className="w-full mt-4 h-12 text-lg bg-vibrant-pink"
-              onClick={handleAddToCart}
-            >
-              Add To Cart
-            </Button>
+              <Button
+                className="w-full mt-4 h-12 md:h-14 text-lg md:text-2xl bg-vibrant-pink landscape:mb-10"
+                onClick={handleAddToCart}
+              >
+                Add To Cart
+              </Button>
+            </section>
           </div>
         )
       )}
