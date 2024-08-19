@@ -57,7 +57,7 @@ const FavoriteFoodList = () => {
           <MoonLoader size={50} color={"#fd1e52"} loading={loading} />
         </div>
       ) : (
-        <div className="grid grid-cols-2 gap-4 font-normal">
+        <div className="foodcard-grid font-normal">
           {foodItems.map((foodItem) => (
             <FoodCard
               key={foodItem.name}

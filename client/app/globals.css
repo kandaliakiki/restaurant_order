@@ -75,11 +75,11 @@
 }
 
 .add_minus-btn {
-  @apply bg-vibrant-pink flex-1 h-5 text-center rounded-xl flex items-center justify-center;
+  @apply bg-vibrant-pink flex-1 h-5 lg:h-8 text-center rounded-xl flex items-center justify-center;
 }
 
 .add_minus-div {
-  @apply bg-vibrant-light-pink w-16   flex self-center items-center justify-evenly rounded-md text-white;
+  @apply bg-vibrant-light-pink w-16 lg:w-32  flex self-center items-center justify-evenly rounded-md text-white;
 }
 
 .section-title {

@@ -13,7 +13,7 @@ interface ConfirmProductProps {
 }
 
 const ConfirmProduct: React.FC<ConfirmProductProps> = ({ setCurrentPage }) => {
-  const { cart, removeFromCart } = useCart();
+  const { cart, removeFromCart, addToCart } = useCart();
   const { subtotal, adminFee, total, setSubtotal } = useCartSummary();
   const [detailedCart, setDetailedCart] = useState<
     Array<{
@@ -94,28 +94,33 @@ const ConfirmProduct: React.FC<ConfirmProductProps> = ({ setCurrentPage }) => {
         })
         .filter((item) => item !== null)
     );
+
+    addToCart({ productId, quantity: delta, addOns }); // Add to cart with delta
   };
 
   return (
-    <>
+    <section className=" md:w-3/4 md:mx-auto">
       {detailedCart.map((item) => (
         <div
           className="flex w-full bg-white rounded-lg shadow-lg pr-3 mb-1 "
           key={item.productId + item.addOns}
         >
-          <div className="flex justify-center items-center px-2 ">
+          <div className="flex justify-center items-center px-2 md:py-3">
             <Image
               src={item.imageUrl || "/default-image.jpg"}
               alt="product"
               width={90}
               height={90}
+              className="md:w-32 md:h-32 md:mx-5  "
             />
           </div>
-          <div className="flex-1 flex flex-col justify-center">
-            <p>{item.foodName}</p>
-            <p className="font-normal text-[0.7rem] leading-3">{item.addOns}</p>
+          <div className="flex-1 flex flex-col justify-center ">
+            <p className="md:text-xl">{item.foodName}</p>
+            <p className="md:text-lg font-normal text-[0.7rem] leading-3">
+              {item.addOns}
+            </p>
             <div className="flex justify-between items-center mt-2">
-              <p className="text-vibrant-pink">$ {item.price}</p>
+              <p className="text-vibrant-pink md:text-lg">$ {item.price}</p>
               <div className="add_minus-div">
                 <span
                   className="add_minus-btn"
@@ -125,7 +130,7 @@ const ConfirmProduct: React.FC<ConfirmProductProps> = ({ setCurrentPage }) => {
                 >
                   -
                 </span>
-                <span className="flex-1 text-center h-5 flex items-center justify-center">
+                <span className="flex-1 text-center h-5 flex items-center justify-center md:text-xl">
                   {item.quantity}
                 </span>
                 <span
@@ -142,18 +147,18 @@ const ConfirmProduct: React.FC<ConfirmProductProps> = ({ setCurrentPage }) => {
         </div>
       ))}
       <CartSummary subtotal={subtotal} adminFee={adminFee} total={total} />
-      <div className="flex w-full justify-between gap-3 ">
-        <Button className="w-24 bg-white-background border-gray-500 text-gray-500 border-1 border ">
+      <div className="flex w-full justify-between gap-3 md:mt-5  ">
+        <Button className="w-24 bg-white-background md:text-2xl md:w-32 md:h-[4rem]  border-gray-500 text-gray-500 border-1 border ">
           Cancel
         </Button>
         <Button
-          className="w-full bg-vibrant-pink text-white "
+          className="w-full bg-vibrant-pink text-white md:text-2xl md:h-[4rem] "
           onClick={() => setCurrentPage("confirmPurchase")}
         >
           Proceed to Purchase
         </Button>
       </div>
-    </>
+    </section>
   );
 };
 

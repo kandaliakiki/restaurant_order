@@ -12,7 +12,7 @@ const CartSummary: React.FC<CartSummaryProps> = ({
   total,
 }) => {
   return (
-    <div className="w-full bg-white rounded-lg shadow-lg p-3 mb-1 text-sm flex flex-col gap-1 ">
+    <div className="w-full bg-white rounded-lg shadow-lg p-3 mb-1 text-sm md:text-lg flex flex-col gap-1 ">
       <div className="flex justify-between">
         <span className="text-gray-400">Sub Total</span>
         <div className="flex justify-between w-14 ">

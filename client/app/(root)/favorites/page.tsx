@@ -10,7 +10,7 @@ const page = async () => {
   }
   return (
     <section className="flex flex-col gap-2 mt-2">
-      <p className="text-2xl font-medium">Favorites</p>
+      <p className="section-title">Favorites</p>
       <FavoriteFoodList />
     </section>
   );
