@@ -16,6 +16,9 @@ const oswald = Oswald({
 export const metadata: Metadata = {
   title: "Restaurant_App",
   description: "Fully Functional Food Ordering App",
+  icons: {
+    icon: "/images/icon.png",
+  },
 };
 
 export default function HighestLayout({
