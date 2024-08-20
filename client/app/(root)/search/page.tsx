@@ -9,7 +9,7 @@ import { FoodItem } from "@/components/shared/interface";
 import { useCart } from "@/components/cart_component/CartContext";
 import { motion, AnimatePresence } from "framer-motion"; // Import Framer Motion
 
-const page = () => {
+const Page = () => {
   const [isFilterClicked, setIsFilterClicked] = useState(false);
   const [sliderValue, setSliderValue] = useState(10);
   const [checkedFoodTypes, setCheckedFoodTypes] = useState<string[]>([]);
@@ -130,4 +130,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
