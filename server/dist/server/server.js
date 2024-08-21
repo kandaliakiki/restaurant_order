@@ -30,7 +30,6 @@ app.use((0, cors_1.default)());
 // API endpoint to get all food items
 app.get("/api/food", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        yield (0, food_actions_1.createFoodFirstTime)();
         const foodItems = yield (0, food_actions_1.getAllFood)();
         res.status(200).json(foodItems);
     }
