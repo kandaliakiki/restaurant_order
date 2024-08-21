@@ -81,7 +81,7 @@ export const foodDeals = [
   // Burgers
   {
     imageUrl:
-      "https://storage.googleapis.com/restaurantapp/food-menu/double-decker-beef-burger.png",
+      "https://drive.google.com/uc?export=view&id=1-25iM2OatqKzVGGTYy5iq6qP957P4Tq2",
     foodName: "Double Decker Beef Burger",
     price: 7.49,
     isFavorite: false,
@@ -93,7 +93,7 @@ export const foodDeals = [
   },
   {
     imageUrl:
-      "https://storage.googleapis.com/restaurantapp/food-menu/cheeseburger.png",
+      "https://drive.google.com/uc?export=view&id=1-Uqz4wt6zsUPXGi_XLfsak7pxr1MXw7U",
     foodName: "Cheeseburger",
     price: 6.49,
     isFavorite: true,
@@ -105,7 +105,19 @@ export const foodDeals = [
   },
   {
     imageUrl:
-      "https://storage.googleapis.com/restaurantapp/food-menu/bacon-cheeseburger.png",
+      "https://drive.google.com/uc?export=view&id=1-Uqz4wt6zsUPXGi_XLfsak7pxr1MXw7U",
+    foodName: "Grilled Chicken Sandwich",
+    price: 6.99,
+    isFavorite: true,
+    description:
+      "Our Grilled Chicken Sandwich features a tender grilled chicken breast, fresh lettuce, tomatoes, and a tangy sauce, all served on a toasted bun. A perfect choice for a light and tasty meal.",
+    subtitle: "A light and tasty meal",
+    rating: 4.4,
+    timeToServe: "10-15 minutes",
+  },
+  {
+    imageUrl:
+      "https://drive.google.com/uc?export=view&id=1-o-5lY9vrI4xYvfUO8gskrhcaRVdtzps",
     foodName: "Bacon Cheeseburger",
     price: 7.99,
     isFavorite: true,
@@ -117,7 +129,7 @@ export const foodDeals = [
   },
   {
     imageUrl:
-      "https://storage.googleapis.com/restaurantapp/food-menu/bbq-bacon-burger.png",
+      "https://drive.google.com/uc?export=view&id=1-isusUYPrjOt6rTmoAqZjLvkAUOyO8-4",
     foodName: "BBQ Bacon Burger",
     price: 8.99,
     isFavorite: true,
@@ -129,45 +141,19 @@ export const foodDeals = [
   },
   {
     imageUrl:
-      "https://storage.googleapis.com/restaurantapp/food-menu/grilled-chicken-sandwich.png",
-    foodName: "Grilled Chicken Sandwich",
-    price: 6.99,
+      "https://drive.google.com/uc?export=view&id=1-Q1dvdWaaY6McM4ThG6svBioFmAHRT3K",
+    foodName: "Chicken Alfredo Pizza",
+    price: 13.49,
     isFavorite: true,
     description:
-      "Our Grilled Chicken Sandwich features a tender grilled chicken breast, fresh lettuce, tomatoes, and a tangy sauce, all served on a toasted bun. A perfect choice for a light and tasty meal.",
-    subtitle: "A light and tasty meal",
-    rating: 4.4,
-    timeToServe: "10-15 minutes",
-  },
-
-  // Pizzas
-  {
-    imageUrl:
-      "https://storage.googleapis.com/restaurantapp/food-menu/vegetarian-pizza.png",
-    foodName: "Vegetarian Pizza",
-    price: 9.99,
-    isFavorite: true,
-    description:
-      "Our Vegetarian Pizza is topped with a variety of fresh vegetables, including bell peppers, onions, mushrooms, and olives, all on a bed of melted cheese and a crispy crust. A healthy and delicious choice for pizza lovers. Enjoy it with a side of our house salad.",
-    subtitle: "A healthy choice",
-    rating: 4.6,
+      "Our Chicken Alfredo Pizza is topped with creamy Alfredo sauce, tender chicken pieces, and melted cheese, all on a crispy crust. A rich and indulgent pizza.",
+    subtitle: "A rich pizza",
+    rating: 4.8,
     timeToServe: "15-20 minutes",
   },
   {
     imageUrl:
-      "https://storage.googleapis.com/restaurantapp/food-menu/pepperoni-pizza.png",
-    foodName: "Pepperoni Pizza",
-    price: 10.99,
-    isFavorite: false,
-    description:
-      "Our Pepperoni Pizza is loaded with spicy pepperoni slices, melted cheese, and a rich tomato sauce, all on a crispy crust. A classic favorite for pizza lovers.",
-    subtitle: "A classic favorite",
-    rating: 4.7,
-    timeToServe: "15-20 minutes",
-  },
-  {
-    imageUrl:
-      "https://storage.googleapis.com/restaurantapp/food-menu/bbq-chicken-pizza.png",
+      "https://drive.google.com/uc?export=view&id=1-f-2ApOPBliJxuPzMmfTUd61XC1wkwEF",
     foodName: "BBQ Chicken Pizza",
     price: 11.49,
     isFavorite: true,
@@ -179,7 +165,7 @@ export const foodDeals = [
   },
   {
     imageUrl:
-      "https://storage.googleapis.com/restaurantapp/food-menu/buffalo-chicken-pizza.png",
+      "https://drive.google.com/uc?export=view&id=1-bbQEXR_j02yzCZDdP0kZgm3RQSiDQmH",
     foodName: "Buffalo Chicken Pizza",
     price: 12.49,
     isFavorite: true,
@@ -191,21 +177,31 @@ export const foodDeals = [
   },
   {
     imageUrl:
-      "https://storage.googleapis.com/restaurantapp/food-menu/chicken-alfredo-pizza.png",
-    foodName: "Chicken Alfredo Pizza",
-    price: 13.49,
+      "https://drive.google.com/uc?export=view&id=1-swv8ftxn6NEp9NHy-QGDy0VHZvDSgK2",
+    foodName: "Vegetarian Pizza",
+    price: 9.99,
     isFavorite: true,
     description:
-      "Our Chicken Alfredo Pizza is topped with creamy Alfredo sauce, tender chicken pieces, and melted cheese, all on a crispy crust. A rich and indulgent pizza.",
-    subtitle: "A rich pizza",
-    rating: 4.8,
+      "Our Vegetarian Pizza is topped with a variety of fresh vegetables, including bell peppers, onions, mushrooms, and olives, all on a bed of melted cheese and a crispy crust. A healthy and delicious choice for pizza lovers. Enjoy it with a side of our house salad.",
+    subtitle: "A healthy choice",
+    rating: 4.6,
     timeToServe: "15-20 minutes",
   },
-
-  // Chicken
   {
     imageUrl:
-      "https://storage.googleapis.com/restaurantapp/food-menu/spicy-chicken-wings.png",
+      "https://drive.google.com/uc?export=view&id=102POIMYsyYyp33rgDeHKawJUmPIGwsqi",
+    foodName: "Pepperoni Pizza",
+    price: 10.99,
+    isFavorite: false,
+    description:
+      "Our Pepperoni Pizza is loaded with spicy pepperoni slices, melted cheese, and a rich tomato sauce, all on a crispy crust. A classic favorite for pizza lovers.",
+    subtitle: "A classic favorite",
+    rating: 4.7,
+    timeToServe: "15-20 minutes",
+  },
+  {
+    imageUrl:
+      "https://drive.google.com/uc?export=view&id=1022k3RGWTlNc_lkmzWkVUBwVStQNLUVE",
     foodName: "Spicy Chicken Wings",
     price: 5.99,
     isFavorite: true,
@@ -217,7 +213,7 @@ export const foodDeals = [
   },
   {
     imageUrl:
-      "https://storage.googleapis.com/restaurantapp/food-menu/chicken-nuggets.png",
+      "https://drive.google.com/uc?export=view&id=1-D5e6G_u59RJA5xS2xrjdFnvJ8T6mUoU",
     foodName: "Chicken Nuggets",
     price: 4.99,
     isFavorite: false,
@@ -229,7 +225,7 @@ export const foodDeals = [
   },
   {
     imageUrl:
-      "https://storage.googleapis.com/restaurantapp/food-menu/chicken-caesar-wrap.png",
+      "https://drive.google.com/uc?export=view&id=1-ObPeQlqUMfpXveFO13nd-O31GDe-R3G",
     foodName: "Chicken Caesar Wrap",
     price: 7.99,
     isFavorite: false,
@@ -241,7 +237,7 @@ export const foodDeals = [
   },
   {
     imageUrl:
-      "https://storage.googleapis.com/restaurantapp/food-menu/chicken-quesadilla.png",
+      "https://drive.google.com/uc?export=view&id=1-7oQzHMxcES0hqZYQv0JQ2YTYCe2lYB4",
     foodName: "Chicken Quesadilla",
     price: 6.99,
     isFavorite: false,
@@ -253,21 +249,7 @@ export const foodDeals = [
   },
   {
     imageUrl:
-      "https://storage.googleapis.com/restaurantapp/food-menu/chicken-tenders.png",
-    foodName: "Chicken Tenders",
-    price: 5.99,
-    isFavorite: false,
-    description:
-      "Our Chicken Tenders are crispy on the outside and tender on the inside, served with your choice of dipping sauce. A perfect meal or snack for chicken lovers.",
-    subtitle: "A perfect meal",
-    rating: 4.4,
-    timeToServe: "10-15 minutes",
-  },
-
-  // Fries
-  {
-    imageUrl:
-      "https://storage.googleapis.com/restaurantapp/food-menu/french-fries.png",
+      "https://drive.google.com/uc?export=view&id=10CB0xNlmfQ26zanL7i4QkEKjivDsmHgR",
     foodName: "French Fries",
     price: 2.99,
     isFavorite: true,
@@ -279,7 +261,7 @@ export const foodDeals = [
   },
   {
     imageUrl:
-      "https://storage.googleapis.com/restaurantapp/food-menu/buffalo-chicken-pizza.png",
+      "https://drive.google.com/uc?export=view&id=1-XJaaAkK0K9sFN8rWWiRAABi7Zg958P5",
     foodName: "Cheese Fries",
     price: 3.99,
     isFavorite: true,
@@ -291,7 +273,7 @@ export const foodDeals = [
   },
   {
     imageUrl:
-      "https://storage.googleapis.com/restaurantapp/food-menu/garlic-parmesan-fries.png",
+      "https://drive.google.com/uc?export=view&id=1092TMvvUFwx56uBAaRLVUcTKHraxeJh4",
     foodName: "Garlic Parmesan Fries",
     price: 3.99,
     isFavorite: true,
@@ -303,7 +285,7 @@ export const foodDeals = [
   },
   {
     imageUrl:
-      "https://storage.googleapis.com/restaurantapp/food-menu/sweet-potato-fries.png",
+      "https://drive.google.com/uc?export=view&id=1-yLcSZE_tHgP2vn6pSJI1y9_D6TTWsbK",
     foodName: "Sweet Potato Fries",
     price: 3.49,
     isFavorite: false,
