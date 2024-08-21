@@ -32,7 +32,6 @@ connectToDB();
 // API endpoint to get all food items
 app.get("/api/food", async (req, res) => {
   try {
-    await createFoodFirstTime();
     const foodItems = await getAllFood();
     res.status(200).json(foodItems);
   } catch (error) {
